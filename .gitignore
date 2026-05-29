@@ -1,0 +1,28 @@
+# .gitignore
+# Ignore All
+*.*
+
+# Allowlist
+!.git/*
+!.gitignore
+!.gitattributes
+!*.js
+!*.ts
+!*.py
+!*.sh
+!*.ps1
+!*.json
+!*.md
+!*.txt
+!*.tsv
+!*.png
+!*.PNG
+!*.jpg
+!*.JPG
+!*.yml
+
+# Allow .codex directory and files directly under it
+!.codex/
+!.codex/*
+!.codex-sample/
+!.codex-sample/*
