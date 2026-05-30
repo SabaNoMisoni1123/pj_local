@@ -28,6 +28,14 @@ If a location cannot be identified, write `該当箇所不明`.
 
 When evidence is stored in non-text files, use the markitdown-mcp server to convert supported files to Markdown before extracting claims when direct reading is impractical. Treat converted Markdown as a derived aid, cite original files, and mark any claim whose location or context is weakened by conversion.
 
+## Workflow
+
+1. List the claims, decisions, TODOs, or statements that need evidence.
+2. Locate the strongest available source for each claim, prioritizing original project materials and primary public sources.
+3. Classify each item as `事実`, `推測`, `不明`, or `要確認`.
+4. Record source file, location, date or URL when available, and any low-confidence conversion notes.
+5. Surface contradictions, missing evidence, and confirmation questions instead of resolving them silently.
+
 ## Output
 
 Use Japanese unless the user requests another language.

@@ -32,6 +32,7 @@ Use these files as the standard references:
 - `operating_ja/low_confidence_sources.md` for generated, temporary, converted, draft, sample, or otherwise low-confidence sources.
 - `operating_ja/project_local_storage.md` for project-specific Codex working context.
 - `operating_ja/agents_update_policy.md` for AGENTS.md update proposals.
+- `.agents/AGENTS.md` for the design, maintenance policy, and audit procedure of the `.agents` directory.
 - `.agents/skills/README.md` for skill discovery and skill addition rules.
 
 When a relevant `SKILL.md` exists, follow both the skill and the common operating rules. If they conflict, follow the active project `AGENTS.md` first, then this file, then the common operating rules, then the skill.

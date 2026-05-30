@@ -27,6 +27,14 @@ id,status,priority,task,owner,due_date,source_file,source_location,evidence_type
 
 Use `不明` for unknown owner or due date. Do not infer people, dates, or priorities without evidence.
 
+## Workflow
+
+1. Read the relevant source materials and identify explicit actions, pending decisions, unresolved questions, and review comments that require follow-up.
+2. Normalize each item into the required columns without inventing owner, due date, status, or priority.
+3. Merge duplicates only when the source evidence clearly points to the same action.
+4. Mark ambiguous actions, missing owners, and uncertain due dates as `要確認` or `不明`.
+5. Recheck every row against its source and remove background statements that are not actionable.
+
 ## Output
 
 Use CSV when the user asks for a task ledger, otherwise use a Japanese table.

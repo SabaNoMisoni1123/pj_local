@@ -2,6 +2,8 @@
 
 This directory contains agent-executable task definitions.
 
+For the design policy, skill inventory, maintenance criteria, and audit procedure of the whole `.agents` directory, read `.agents/AGENTS.md`.
+
 ## Discovery Rule
 
 Every immediate subdirectory that contains `SKILL.md` is a valid skill.
@@ -80,6 +82,7 @@ Do not store project-specific facts or working notes inside this skill directory
 - Put reusable templates or visual assets in `assets/` only when the skill needs them to produce outputs.
 - Use `evals/` for representative test prompts and expected quality criteria when the skill is high-impact or easy to misuse.
 - Do not store project-specific facts, client names, private source extracts, credentials, or working notes in a portable skill directory.
+- Record large reorganizations, unresolved duplicate boundaries, or audit findings under `.agents/reports/` before making broad changes.
 
 ## Naming
 

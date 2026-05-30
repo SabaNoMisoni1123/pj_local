@@ -5,14 +5,13 @@
 ## 含めるタスク
 
 - メールスレッド整理
-- ファイル索引作成
+- ファイル索引・プロジェクト索引作成
 - ファイル名インデックス作成
 - 根拠整理
 - 用語集作成
 - ナレッジ化
 - 未確認事項整理
 - project context作成
-- プロジェクト索引作成
 
 ## 代表skill
 
@@ -21,7 +20,6 @@
 - `information-organization-email-thread`
 - `information-organization-evidence-trace`
 - `information-organization-glossary`
-- `information-organization-file-index`
 - `information-organization-file-name-index`
 - `information-organization-project-context`
 - `information-organization-project-index`
@@ -35,3 +33,9 @@
 ファイル名インデックスは、ファイルを開く前の探索コストを下げるためのAIエージェント向け日本語メモです。
 
 原則としてファイル名・フォルダ名・拡張子・更新日時などのメタ情報から作成し、内容を読んでいない場合は内容を断定しません。
+
+## ファイル索引・プロジェクト索引
+
+ファイルを開く、または内容の役割まで確認して資料台帳やアクセスマップを作る場合は `information-organization-project-index` を使います。
+
+ファイル名やフォルダ名だけで探索用メモを作る場合は `information-organization-file-name-index` を使います。

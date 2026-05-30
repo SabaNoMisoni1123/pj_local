@@ -13,10 +13,9 @@ skill の正式な発見単位は `../.agents/skills/*/SKILL.md` であり、こ
 | 情報整理 | メールスレッド整理 | `information-organization-email-thread` | `.eml`, `_mail.yml` | 時系列、決定事項、未決事項 |
 | 情報整理 | 根拠整理 | `information-organization-evidence-trace` | 任意資料 | 根拠表、確認事項 |
 | 情報整理 | 用語集作成 | `information-organization-glossary` | プロジェクト資料、議事録、メール、公開情報 | 用語集、略語集、表記統一案 |
-| 情報整理 | ファイル索引 | `information-organization-file-index` | プロジェクト内ファイル | ファイル索引 |
+| 情報整理 | ファイル索引・プロジェクト索引 | `information-organization-project-index` | プロジェクト内ファイル | ファイル索引、資料索引、アクセスマップ |
 | 情報整理 | ファイル名インデックス | `information-organization-file-name-index` | プロジェクト内ファイル名・フォルダ名 | AIエージェント向け日本語メモ |
 | 情報整理 | project context作成 | `information-organization-project-context` | プロジェクト資料一式 | project context |
-| 情報整理 | プロジェクト索引 | `information-organization-project-index` | プロジェクト内ファイル | 資料索引、アクセスマップ |
 | 文書校閲 | 整合性チェック | `document-review-consistency` | 報告書、仕様書、資料 | 指摘表 |
 | 文書校閲 | 品質チェック | `document-review-quality-check` | 成果物、レビュー対象 | 品質チェック結果 |
 | 文書校閲 | ロジック・構成レビュー | `document-review-logic-structure` | 報告書、スライド、提案書、メモ | 論理構成レビュー、修正提案 |

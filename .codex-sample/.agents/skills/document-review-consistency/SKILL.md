@@ -17,6 +17,14 @@ When reviewing PDFs, Office files, email exports, or other non-text materials, u
 
 Check dates, fiscal years, periods, organization names, people, roles, numbers, units, totals, figure/table references, terminology, abbreviations, decisions, TODO correspondence, and contradictions across body text, tables, footnotes, and attachments.
 
+## Workflow
+
+1. Identify the target document set and any authoritative sources, previous versions, or reference files.
+2. Review headings, body text, tables, figures, footnotes, filenames, appendices, and cross-references.
+3. Compare repeated facts such as dates, numbers, names, terms, decisions, owners, and TODOs across the materials.
+4. Classify findings as confirmed defects, possible inconsistencies, or items requiring source confirmation.
+5. Provide a fix recommendation and enough source location detail for each issue to be reproduced.
+
 ## Output Format
 
 ```markdown
