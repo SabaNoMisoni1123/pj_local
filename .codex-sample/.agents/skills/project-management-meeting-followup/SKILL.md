@@ -1,31 +1,25 @@
 ---
 name: project-management-meeting-followup
-description: Use when the user asks to summarize meeting follow-ups, extract post-meeting actions, identify decisions, open questions, risks, and next steps from meeting notes, transcripts, or email recaps.
+description: Use when extracting or summarizing post-meeting actions, decisions, TODOs, open questions, risks, and next steps from notes, transcripts, or email recaps. Japanese triggers: 会議フォロー, TODO抽出, 次アクション.
 ---
 
-# Project Management Meeting Follow-up Workflow
+# Project Management Meeting Follow-up
 
 ## Purpose
 
-Turn meeting materials into decisions, TODOs, open questions, and next-step follow-up items.
-
-## Source Material Handling
-
-When meeting materials are in non-text formats supported by markitdown-mcp, convert them to Markdown before extraction when direct reading is impractical. Treat converted Markdown as a derived aid, cite original files, and mark speaker attribution, timestamps, owners, and deadlines as requiring confirmation when the conversion is ambiguous.
+Turn meeting materials into project-management-ready decisions, TODOs, open questions, and next confirmations.
 
 ## Workflow
 
 1. Confirm meeting date, participants, agenda, and source confidence.
 2. Extract decisions, action items, risks, unresolved questions, and owner/date information.
-3. Do not infer missing owners or deadlines.
-4. Mark ambiguous items as requiring confirmation.
-5. Cite evidence by source file and traceable location.
+3. Do not infer missing owners, deadlines, or approval status.
+4. Mark ambiguous items as `要確認`.
+5. Cite source files and traceable locations.
 
 ## Output
 
-Use Japanese unless the user requests another language.
-
-Recommended sections:
+Use Japanese unless requested otherwise. Recommended sections:
 
 - 会議概要
 - 決定事項
@@ -37,15 +31,7 @@ Recommended sections:
 
 ## Quality Checks
 
-- Separate action items from decisions, discussion notes, and open questions.
-- Do not infer missing owners, deadlines, or approval status.
-- Keep follow-up wording concrete enough for project management.
-- Cite source material for each important decision or action.
-
-## Common Operating Rules
-
-Follow the active project AGENTS.md and the common rules under `operating_ja/`, especially workflow, source confidence, naming rules, output location, and quality checks.
-
-## Portability
-
-This skill must remain project-agnostic. Do not store project-specific facts or working notes inside this skill directory.
+- Separate action items, decisions, discussion notes, and open questions.
+- Make follow-up wording concrete enough for project management.
+- Use markitdown-mcp only when non-text materials must be inspected; flag unclear speaker, timestamp, owner, or deadline evidence.
+- Follow active `AGENTS.md` and `operating_ja/`; do not store project-specific facts in this skill.

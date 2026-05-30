@@ -1,33 +1,26 @@
 ---
 name: information-organization-glossary
-description: Use when the user asks to create, update, review, or organize a glossary, acronym list, terminology table, proper noun list, known people and organizations memo, stakeholder name list, or project-specific vocabulary reference from project materials.
+description: Use when creating, updating, reviewing, or organizing glossaries, acronym lists, terminology tables, proper noun lists, known people and organization memos, or stakeholder vocabularies. Japanese triggers: 用語集, 略語表, 固有名詞.
 ---
 
-# Information Organization Glossary Workflow
+# Information Organization Glossary
 
 ## Purpose
 
-Create a reusable terminology reference that helps future work use consistent names, definitions, acronyms, and stakeholder labels.
-
-## Source Material Handling
-
-When terminology must be extracted from PDFs, Office files, email exports, or other supported non-text materials, use the markitdown-mcp server to convert them to Markdown when direct reading is impractical. Treat converted Markdown as a derived aid, cite original files, and flag definitions that may depend on tables, figures, comments, or layout.
+Create a reusable terminology reference for consistent names, definitions, acronyms, and stakeholder labels.
 
 ## Workflow
 
-1. Confirm the intended use, target readers, source materials, and whether people or organization names should be included.
-2. Extract terms, acronyms, official names, alternative names, people, organizations, systems, policies, programs, and project-specific phrases.
-3. For each entry, record the preferred term, reading or English form when useful, definition, source, related terms, and notes.
-4. Distinguish official definitions from inferred meanings and project shorthand.
+1. Confirm intended use, readers, sources, and whether people or organization names are included.
+2. Extract terms, acronyms, official names, aliases, people, organizations, systems, policies, programs, and project phrases.
+3. Record preferred term, reading or English form, definition, evidence, related terms, and notes.
+4. Distinguish official definitions, inferred meanings, and convenience labels.
 5. Mark unresolved spelling, translation, abbreviation, affiliation, role, or naming conflicts as `要確認`.
-6. Do not expose sensitive personal information beyond what is necessary for the active project output.
-7. Recommend naming rules or wording choices when inconsistent terms appear.
+6. Avoid exposing personal information beyond what is necessary for the active project output.
 
 ## Output
 
-Use Japanese unless the user requests another language.
-
-Recommended sections:
+Use Japanese unless requested otherwise. Recommended sections:
 
 - 作成目的
 - 用語集
@@ -37,29 +30,12 @@ Recommended sections:
 - 要確認事項
 - 根拠・参照元
 
-For glossary tables, use columns such as:
+Glossary tables should use `用語`, `読み・英語表記`, `種別`, `定義・説明`, `推奨表記`, `関連語`, `根拠・出所`, `要確認`.
 
-- 用語
-- 読み・英語表記
-- 種別
-- 定義・説明
-- 推奨表記
-- 関連語
-- 根拠・出所
-- 要確認
+## Quality Checks
 
-## Quality Criteria
-
-- Do not invent definitions that are not supported by the available materials.
-- Preserve official names when confirmed by source materials.
-- Separate confirmed facts, likely interpretations, and user/Codex convenience labels.
-- Flag low-confidence sources if generated, draft, converted, or temporary files are used.
-- Keep project-specific facts outside the portable skill directory.
-
-## Common Operating Rules
-
-Follow the active project AGENTS.md and the common rules under `operating_ja/`, especially workflow, source confidence, naming rules, output location, project-local storage, and quality checks.
-
-## Portability
-
-This skill must remain project-agnostic. Do not store project-specific facts or working notes inside this skill directory.
+- Do not invent definitions without source support.
+- Preserve official names when confirmed.
+- Flag low-confidence, generated, draft, or converted sources.
+- Use markitdown-mcp only when non-text materials must be inspected.
+- Follow active `AGENTS.md` and `operating_ja/`; do not store project-specific facts in this skill.

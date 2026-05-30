@@ -1,49 +1,35 @@
 ---
 name: communication-email-draft
-description: Use when the user asks to draft, revise, polish, or prepare email messages, request letters, stakeholder updates, inquiry responses, or business communication text.
+description: Use when drafting, revising, polishing, or preparing emails, request letters, stakeholder updates, inquiry replies, or business communication text. Japanese triggers: メール文案, 依頼文, 連絡文.
 ---
 
-# Communication Email Draft Workflow
+# Communication Email Draft
 
 ## Purpose
 
 Draft clear business communication that separates confirmed facts from open questions.
-
-## Source Material Handling
-
-When email drafts depend on project materials, attachments, or prior correspondence in non-text formats, use the markitdown-mcp server to convert supported files to Markdown when direct reading is impractical. Treat converted Markdown as a derived aid and do not imply confirmed facts, attachments, approvals, dates, or commitments unless supported by original sources.
 
 ## Workflow
 
 1. Confirm recipient, purpose, tone, and required action.
 2. Use project-specific facts only when supported by evidence.
 3. Use placeholders for unknown names, dates, amounts, deadlines, or owners.
-4. Avoid overclaiming; separate confirmed items from items under confirmation.
-5. Produce concise subject and body options when useful.
+4. Keep confirmed facts, requests, and confirmation items distinct.
+5. Provide subject, body, shorter version, or alternative wording when useful.
 
 ## Output
 
-Use Japanese unless the user requests another language.
-
-Recommended sections:
+Use Japanese unless the user requests another language. Recommended sections:
 
 - 件名案
 - 本文案
 - 送付前の確認事項
-- 代替表現または短縮版, when useful
+- 代替表現または短縮版
 
 ## Quality Checks
 
-- Match the recipient relationship, requested tone, and business purpose.
-- Keep requests, deadlines, and expected actions unambiguous.
-- Do not invent names, dates, commitments, approvals, or attachments.
-- Mark placeholders clearly for unknown facts.
-- Avoid language that overcommits the user or implies unconfirmed agreement.
-
-## Common Operating Rules
-
-Follow the active project AGENTS.md and the common rules under `operating_ja/`, especially workflow, source confidence, naming rules, output location, and quality checks.
-
-## Portability
-
-This skill must remain project-agnostic. Do not store project-specific facts or working notes inside this skill directory.
+- Match the relationship, business purpose, requested action, and deadline.
+- Do not imply unconfirmed agreement, approval, attachments, dates, or commitments.
+- Avoid language that overcommits the user.
+- Use markitdown-mcp only when non-text materials must be inspected; prefer original sources.
+- Follow active `AGENTS.md` and `operating_ja/`; do not store project-specific facts in this skill.

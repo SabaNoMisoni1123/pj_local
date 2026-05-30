@@ -1,45 +1,34 @@
 ---
 name: ai-operations-prompt-drafting
-description: Use when the user asks to create prompts, instructions, task briefs, work orders, AI-agent instructions, quality criteria, or generation prompts for business work based on project materials.
+description: Use when drafting or improving prompts, task briefs, AI-agent instructions, work orders, generation prompts, or quality criteria for business work. Japanese triggers: プロンプト, AI指示, 作業依頼.
 ---
 
-# AI Operations Prompt Drafting Workflow
+# AI Operations Prompt Drafting
 
 ## Purpose
 
-Create clear prompts and task instructions for AI agents or human collaborators while preserving evidence discipline.
+Create reusable prompts with clear objectives, inputs, constraints, outputs, and acceptance criteria.
 
-## Source Material Handling
+## Required Elements
 
-When prompts or task briefs depend on project materials in non-text formats, use the markitdown-mcp server to convert supported files to Markdown before extracting requirements when direct reading is impractical. Include source priority, original file references, and conversion limitations in the drafted prompt when they affect evidence handling.
-
-## Prompt Requirements
-
-Include objective, input materials, source priority, prohibited actions, output format, evidence citation rules, treatment of unknowns, treatment of low-confidence files, quality criteria, and constraints on editing or overwriting files.
+Objective, target user or agent, input materials, source priority, allowed and prohibited actions, output format, evidence rules, unknown handling, low-confidence source handling, overwrite limits, and review criteria.
 
 ## Workflow
 
-1. Clarify the target user, agent, or workflow and the exact artifact the prompt should produce.
-2. Extract source constraints from project materials, active `AGENTS.md`, and relevant operating rules.
-3. Draft the prompt with objective, inputs, source priority, allowed tools, prohibited actions, output format, and acceptance criteria.
-4. Add rules for unknowns, assumptions, low-confidence materials, citations, and overwrite prevention.
-5. Review the prompt against the intended task and remove instructions that are broad, unverifiable, or likely to trigger unsafe actions.
+1. Clarify the target user, execution context, expected artifact, and use case.
+2. Extract constraints from active `AGENTS.md`, relevant operating rules, and project materials.
+3. Draft concise instructions covering objective, inputs, procedure, output format, and acceptance criteria.
+4. Add rules for unknowns, assumptions, low-confidence materials, citations, and file edits.
+5. Remove broad, unverifiable, unsafe, or overwrite-prone instructions.
 
-## Output Language
+## Output
 
-Use the language requested by the user. If no language is specified, prefer English for executable task instructions and Japanese for human-facing explanations when the active user works in Japanese.
+Use the user's requested language. If unspecified, use English for executable prompt instructions and Japanese for human-facing explanations.
 
 ## Quality Checks
 
-- Make the task objective, inputs, constraints, and output format explicit.
-- Include source priority and rules for unknowns, assumptions, and low-confidence materials.
-- Avoid prompts that encourage invented facts, hidden chain-of-thought disclosure, or unauthorized overwrites.
-- Add acceptance criteria that a reviewer can actually verify.
-
-## Common Operating Rules
-
-Follow the active project AGENTS.md and the common rules under `operating_ja/`, especially workflow, source confidence, naming rules, output location, and quality checks.
-
-## Portability
-
-This skill must remain project-agnostic. Do not store project-specific facts or working notes inside this skill directory.
+- Make the objective, inputs, constraints, and output format immediately clear.
+- Do not encourage fabricated facts, hidden chain-of-thought disclosure, or unauthorized overwrites.
+- Make acceptance criteria externally verifiable.
+- Use markitdown-mcp only when non-text source materials must be inspected; cite originals and note conversion limits.
+- Follow active `AGENTS.md` and `operating_ja/`; do not store project-specific facts in this skill.

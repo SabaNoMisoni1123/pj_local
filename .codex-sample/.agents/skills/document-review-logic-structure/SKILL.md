@@ -1,34 +1,27 @@
 ---
 name: document-review-logic-structure
-description: Use when the user asks to review a report, slide deck, proposal, memo, or draft for storyline, logical structure, issue alignment, argument flow, MECE quality, conclusion-evidence fit, recommendations, or consulting-style narrative strength.
+description: Use when reviewing reports, slide decks, proposals, or memos for storyline, logic, issue alignment, conclusion-evidence fit, recommendations, or consulting-style narrative. Japanese triggers: 論理構成レビュー, ストーリー, 結論と根拠.
 ---
 
-# Document Review Logic Structure Workflow
+# Document Review Logic Structure
 
 ## Purpose
 
-Review whether a document's conclusion, storyline, issues, evidence, and recommendations form a coherent argument.
-
-## Source Material Handling
-
-When the document or supporting material is a PDF, PowerPoint, Word file, spreadsheet, or other non-text artifact, use the markitdown-mcp server to convert supported files to Markdown for structure and claim inspection. Treat converted Markdown as a derived aid and flag any logic or storyline findings that may depend on visual layout, slide order, speaker notes, tables, or figures.
+Check whether conclusions, storyline, issues, evidence, and recommendations form a coherent argument.
 
 ## Workflow
 
-1. Confirm the document purpose, audience, expected decision, and review depth.
-2. Identify the stated or implied main conclusion and each major supporting claim.
-3. Map the document structure: chapters, sections, slide sequence, issue flow, and recommendation flow.
-4. Check whether each conclusion is supported by sufficient evidence or clearly marked assumptions.
-5. Identify logical gaps, unsupported jumps, circular reasoning, duplicated points, misplaced details, and missing counterpoints.
-6. Check whether the structure is mutually exclusive and collectively useful for the decision context.
-7. Distinguish critical flaws from optional improvements.
-8. Recommend concrete revisions to headings, order, messages, evidence placement, and missing pages or sections.
+1. Confirm document purpose, audience, expected decision, and review depth.
+2. Extract the main conclusion and major supporting claims.
+3. Map chapters, sections, slide order, issue flow, and recommendation flow.
+4. Check whether each conclusion is supported by evidence or clearly marked as an assumption.
+5. Identify logical gaps, unsupported jumps, circular reasoning, duplication, misplaced details, and missing counterpoints.
+6. Check whether the issue structure is useful for the decision context.
+7. Separate critical flaws from optional improvements; recommend concrete changes to order, headings, messages, and evidence placement.
 
 ## Output
 
-Use Japanese unless the user requests another language.
-
-Recommended sections:
+Use Japanese unless requested otherwise. Recommended sections:
 
 - レビュー対象・前提
 - 総評
@@ -39,28 +32,12 @@ Recommended sections:
 - 修正提案
 - 残存リスク
 
-For issue lists, include:
+Issue tables should use `箇所`, `指摘種別`, `重要度`, `問題`, `影響`, `修正案`, `根拠または確認方法`.
 
-- 箇所
-- 指摘種別
-- 重要度
-- 問題
-- 影響
-- 修正案
-- 根拠または確認方法
+## Quality Checks
 
-## Quality Criteria
-
-- Prioritize findings by severity and decision impact.
+- Prioritize by severity and decision impact.
 - Do not rewrite the whole document unless explicitly asked.
-- Do not treat stylistic preference as a logical defect.
-- Separate evidence-backed critique from reviewer inference.
-- Preserve the user's intended audience and constraints when proposing revisions.
-
-## Common Operating Rules
-
-Follow the active project AGENTS.md and the common rules under `operating_ja/`, especially workflow, source confidence, naming rules, output location, and quality checks.
-
-## Portability
-
-This skill must remain project-agnostic. Do not store project-specific facts or working notes inside this skill directory.
+- Do not treat style preference as a logical defect.
+- Use markitdown-mcp only when non-text materials must be inspected; flag layout-dependent limits.
+- Follow active `AGENTS.md` and `operating_ja/`; do not store project-specific facts in this skill.

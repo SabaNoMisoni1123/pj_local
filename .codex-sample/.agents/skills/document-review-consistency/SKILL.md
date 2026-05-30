@@ -1,29 +1,25 @@
 ---
 name: document-review-consistency
-description: Use when the user asks to review project documents, reports, meeting notes, specifications, slides, spreadsheets, or drafts for consistency, contradictions, missing evidence, terminology mismatch, dates, numbers, references, or quality issues.
+description: Use when reviewing documents, reports, minutes, specifications, slides, or tables for inconsistencies, contradictions, missing evidence, terminology mismatch, dates, numbers, or references. Japanese triggers: 整合性確認, 矛盾チェック, 用語不一致.
 ---
 
-# Document Review Consistency Workflow
+# Document Review Consistency
 
 ## Purpose
 
 Review existing documents for consistency, evidence quality, and business readability.
 
-## Source Material Handling
-
-When reviewing PDFs, Office files, email exports, or other non-text materials, use the markitdown-mcp server to obtain Markdown for inspection when direct reading is impractical. Treat converted Markdown as a derived aid, cite original files and locations, and flag issues that may depend on lost layout, formatting, tables, figures, or comments.
-
 ## Review Targets
 
-Check dates, fiscal years, periods, organization names, people, roles, numbers, units, totals, figure/table references, terminology, abbreviations, decisions, TODO correspondence, and contradictions across body text, tables, footnotes, and attachments.
+Dates, fiscal years, periods, organization names, people, roles, numbers, units, totals, figure/table references, terminology, abbreviations, decisions, TODO correspondence, and contradictions across body text, tables, footnotes, filenames, appendices, and attachments.
 
 ## Workflow
 
-1. Identify the target document set and any authoritative sources, previous versions, or reference files.
+1. Identify target documents, authoritative sources, previous versions, and reference files.
 2. Review headings, body text, tables, figures, footnotes, filenames, appendices, and cross-references.
-3. Compare repeated facts such as dates, numbers, names, terms, decisions, owners, and TODOs across the materials.
-4. Classify findings as confirmed defects, possible inconsistencies, or items requiring source confirmation.
-5. Provide a fix recommendation and enough source location detail for each issue to be reproduced.
+3. Compare repeated facts such as dates, numbers, names, terms, decisions, owners, and TODOs.
+4. Classify findings as confirmed defects, possible inconsistencies, or source-confirmation items.
+5. Provide location detail, evidence, and recommended fix for each finding.
 
 ## Output Format
 
@@ -34,15 +30,8 @@ Check dates, fiscal years, periods, organization names, people, roles, numbers, 
 
 ## Quality Checks
 
-- Check body text, tables, figures, footnotes, filenames, appendices, and cross-references, not only headings.
-- Prioritize contradictions that affect decisions, numbers, dates, owners, or external communication.
-- Distinguish confirmed defects from possible inconsistencies that need source confirmation.
-- Include enough location detail for the user to find and fix each issue.
-
-## Common Operating Rules
-
-Follow the active project AGENTS.md and the common rules under `operating_ja/`, especially workflow, source confidence, naming rules, output location, and quality checks.
-
-## Portability
-
-This skill must remain project-agnostic. Do not store project-specific facts or working notes inside this skill directory.
+- Prioritize contradictions affecting decisions, numbers, dates, owners, or external communication.
+- Distinguish confirmed defects from possible inconsistencies.
+- Include enough location detail for the user to reproduce the issue.
+- Use markitdown-mcp only when non-text materials must be inspected; cite originals and note conversion limits.
+- Follow active `AGENTS.md` and `operating_ja/`; do not store project-specific facts in this skill.

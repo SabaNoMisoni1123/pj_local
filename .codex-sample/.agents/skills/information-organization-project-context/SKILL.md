@@ -1,32 +1,26 @@
 ---
 name: information-organization-project-context
-description: Use when the user asks to create, review, update, or propose a project context, project profile, project overview, current status, key issues, deliverables, stakeholders, or project memory from active project materials.
+description: Use when creating, reviewing, updating, or proposing project context, project profiles, overviews, status, issues, deliverables, stakeholders, or project memory from active project materials. Japanese triggers: プロジェクト概要, project context, 現状整理.
 ---
 
-# Information Organization Project Context Workflow
+# Information Organization Project Context
 
 ## Purpose
 
-Create or update a project-local context file that helps future work start from reliable project facts.
-
-## Source Material Handling
-
-When project facts are stored in non-text materials, use the markitdown-mcp server to convert supported files to Markdown before extracting durable context when direct reading is impractical. Treat converted Markdown as a derived aid, cite original files, and keep uncertain or conversion-sensitive facts marked as requiring confirmation.
+Create or update durable project context in project-local storage so future work starts from reliable facts.
 
 ## Workflow
 
-1. Read active project rules before creating any project context.
-2. Identify project purpose, scope, deliverables, deadlines, stakeholders, meetings, key issues, tasks, and risks.
-3. Use only active project sources as evidence for project-specific facts.
-4. Mark unconfirmed items as unknown or requiring confirmation.
-5. Store project context only in the active project workspace, never in the common `.codex` area.
-6. If updating an existing context, create an update proposal rather than overwriting unless explicitly approved.
+1. Read active project rules before creating or updating context.
+2. Extract purpose, scope, deliverables, deadlines, stakeholders, meetings, key issues, TODOs, and risks.
+3. Use only active project sources for project-specific facts.
+4. Mark unsupported or unclear information as `不明` or `要確認`.
+5. Store context in active project workspace, never in the common `.codex` area.
+6. When updating existing context, propose changes instead of overwriting unless explicitly approved.
 
 ## Output
 
-Use Japanese unless the user requests another language.
-
-Recommended sections:
+Use Japanese unless requested otherwise. Recommended sections:
 
 - プロジェクト概要
 - 目的・背景
@@ -41,16 +35,7 @@ Recommended sections:
 
 ## Quality Checks
 
-- Use only active project materials for project-specific facts.
-- Mark unsupported or stale information as `要確認`.
-- Separate durable project context from temporary work notes.
-- Do not store private project facts inside the common skill directory.
-- Prefer update proposals over overwriting an existing context file.
-
-## Common Operating Rules
-
-Follow the active project AGENTS.md and the common rules under `operating_ja/`, especially workflow, source confidence, naming rules, output location, and quality checks.
-
-## Portability
-
-This skill must remain project-agnostic. Do not store project-specific facts or working notes inside this skill directory.
+- Separate durable context from temporary work notes.
+- Do not turn stale or unsupported information into confirmed context.
+- Use markitdown-mcp only when non-text source materials must be inspected; cite originals.
+- Follow active `AGENTS.md` and `operating_ja/`; do not store project-specific facts in this skill.
