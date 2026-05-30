@@ -37,6 +37,8 @@ OpenAI Codex の公式ドキュメントでは、skill は Agent Skills open sta
 ├─ README.md
 ├─ AGENTS.md
 ├─ .agents/
+│  ├─ AGENTS.md
+│  ├─ README.md
 │  └─ skills/
 │     ├─ README.md
 │     └─ {business-domain}-{task-name}/
@@ -56,8 +58,7 @@ OpenAI Codex の公式ドキュメントでは、skill は Agent Skills open sta
 │  ├─ work_log.md
 │  ├─ low_confidence_sources.md
 │  ├─ project_local_storage.md
-│  ├─ agents_update_policy.md
-│  └─ skill_public_repo_research.md
+│  └─ agents_update_policy.md
 ├─ project-local/
 │  ├─ README.md
 │  ├─ project-context.md
@@ -77,8 +78,6 @@ OpenAI Codex の公式ドキュメントでは、skill は Agent Skills open sta
 `skills` は `.agents/skills/` に置きます。`.codex/skills/` は Codex 固有実装に依存しやすいため、このテンプレートでは標準の相互運用性を優先して採用しません。
 
 `.codex/` は Codex 固有設定の置き場です。業務知識、案件メモ、成果物、ファイル索引は保存しません。
-
-`operating_ja/skill_public_repo_research.md` は、skill 設計を改善するための参考資料です。日付や外部レポジトリ情報を含むため、業務遂行時の必読ルールではありません。
 
 `project-local/` は、新規プロジェクト導入時に使う空テンプレートです。案件情報を記入した後はプロジェクト固有領域となり、他プロジェクトへの横展開対象から外します。
 
@@ -219,8 +218,8 @@ project-local/generated-outputs-index.md
 
 ```text
 AGENTS.md
-.agents/skills/
-.codex/config.toml
+.agents/
+config.toml
 domains_ja/
 operating_ja/
 templates/
@@ -233,7 +232,7 @@ project-local/
 
 既存 `AGENTS.md` がある場合は上書きせず、`templates/agents_update_proposal_template.md` を使って追記案を作成し、人間が必要な範囲だけ反映してください。
 
-既存 `.codex/config.toml` がある場合も上書きせず、必要な設定だけ差分提案にしてください。
+`config.toml` は、移植先では `.codex/config.toml` として扱います。既存 `.codex/config.toml` がある場合は上書きせず、必要な設定だけ差分提案にしてください。
 
 コピーしないことを推奨するもの:
 
@@ -256,7 +255,7 @@ codex_*.md
 
 ## 10. 運用上の注意
 
-- 人間が管理するのは `AGENTS.md`, `.agents/skills/`, `.codex/config.toml`, `domains_ja/`, `operating_ja/`, `templates/` の追加・更新に限定する。
+- 人間が管理するのは `AGENTS.md`, `.agents/`, `.codex/config.toml`, `domains_ja/`, `operating_ja/`, `templates/` の追加・更新に限定する。
 - 既存の Codex 内部ファイル、ログ、DB、セッション、キャッシュ、一時ファイルは直接編集しない。
 - skill は汎用手順に徹し、案件固有の例を入れない。
 - 出力成果物は、各プロジェクトの `AGENTS.md` に従う。

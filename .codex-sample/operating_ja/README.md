@@ -14,7 +14,6 @@
 | `low_confidence_sources.md` | `_gpt` / `_tmp` 等の低信頼ソース運用 |
 | `project_local_storage.md` | プロジェクト固有情報の保存先 |
 | `agents_update_policy.md` | `AGENTS.md` を更新・追記する際の方針 |
-| `skill_public_repo_research.md` | skill設計改善のための参考資料。業務遂行時の必読ルールではない |
 
 ## 基本原則
 
