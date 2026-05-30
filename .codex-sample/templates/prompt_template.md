@@ -1,21 +1,29 @@
 # 生成AI向け作業指示
 
-## Objective / 目的
+## 目的
 
-## Input Materials / 入力資料
+-
 
-## Source Priority / 情報源の優先順位
+## 対象
 
-## Prohibited Actions / 禁止事項
+- 対象ファイル/資料:
+- まず読む範囲:
+- 必要時のみ追加で読む範囲:
 
-## Output Format / 出力形式
+## 制約
 
-## Evidence Rules / 根拠ルール
+- 禁止:
+- 根拠の優先順位:
+- 不明・低信頼情報の扱い:
+- サブエージェント:
 
-## Treatment of Unknowns / 不明事項の扱い
+## 出力
 
-## Treatment of Low-Confidence Sources / 低信頼ソースの扱い
+- 形式:
+- 保存先:
+- 説明量:
 
-## Quality Criteria / 品質基準
+## 確認
 
-## File Editing and Output Location / ファイル編集・保存先
+- 実行する検証:
+- 長いログは `rg`/`head`/`tail` で絞る。
