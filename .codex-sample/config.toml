@@ -1,0 +1,73 @@
+# config.toml for codex
+
+# model
+model = "gpt-5.5"
+model_reasoning_effort = "xhigh"
+model_reasoning_summary = "auto"
+model_verbosity = "medium"
+
+# 編集を任せ、コマンドの承認も不要。
+sandbox_mode = "workspace-write"
+approval_policy = "never"
+
+# Codex の表示・応答スタイル
+personality = "pragmatic"
+
+# Web検索ツール
+# cached: 既定。OpenAI管理の検索キャッシュ
+# live: 最新情報取得。--search 相当
+# disabled: 無効
+web_search = "cached"
+approvals_reviewer = "user"
+
+# 通知
+[tui]
+notifications = ["agent-turn-complete", "approval-requested"]
+notification_condition = "unfocused"
+notification_method = "auto"
+
+[tui.model_availability_nux]
+"gpt-5.5" = 4
+
+# workspace-write にした場合のみ有効
+# read-only のままなら実質使われません
+[sandbox_workspace_write]
+network_access = false
+exclude_slash_tmp = true
+exclude_tmpdir_env_var = true
+
+# shell に渡す環境変数を制限
+[shell_environment_policy]
+inherit = "core"
+include_only = ["PATH", "HOME", "USER", "SHELL", "LANG", "LC_ALL", "TERM"]
+exclude = ["AWS_*", "AZURE_*", "*TOKEN*", "*SECRET*", "*KEY*"]
+
+[features]
+undo = true
+shell_snapshot = true
+
+# MCPサーバ
+[mcp_servers.context7]
+command = "npx"
+args = ["-y", "@upstash/context7-mcp@latest"]
+startup_timeout_sec = 30
+tool_timeout_sec = 60
+
+[mcp_servers.markitdown]
+command = "markitdown-mcp"
+
+[mcp_servers.ultracite]
+command = "npx"
+args = [
+  "-y",
+  "mcp-remote",
+  "https://docs.ultracite.ai/mcp"
+]
+startup_timeout_sec = 30
+tool_timeout_sec = 60
+
+[plugins."google-drive@openai-curated"]
+enabled = true
+
+# trust dir
+# $HOME/.codex/config.toml で定義すること。
