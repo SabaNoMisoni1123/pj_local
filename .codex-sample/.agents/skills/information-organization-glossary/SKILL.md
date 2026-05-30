@@ -1,6 +1,6 @@
 ---
 name: information-organization-glossary
-description: Use when creating, updating, reviewing, or organizing glossaries, acronym lists, terminology tables, proper noun lists, known people and organization memos, or stakeholder vocabularies. Japanese triggers: 用語集, 略語表, 固有名詞.
+description: "Use when creating, updating, reviewing, or organizing glossaries, acronym lists, terminology tables, proper noun lists, known people and organization memos, or stakeholder vocabularies. Japanese triggers: 用語集, 略語表, 固有名詞."
 ---
 
 # Information Organization Glossary

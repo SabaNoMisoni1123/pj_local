@@ -1,6 +1,6 @@
 ---
 name: project-management-meeting-followup
-description: Use when extracting or summarizing post-meeting actions, decisions, TODOs, open questions, risks, and next steps from notes, transcripts, or email recaps. Japanese triggers: 会議フォロー, TODO抽出, 次アクション.
+description: "Use when extracting or summarizing post-meeting actions, decisions, TODOs, open questions, risks, and next steps from notes, transcripts, or email recaps. Japanese triggers: 会議フォロー, TODO抽出, 次アクション."
 ---
 
 # Project Management Meeting Follow-up

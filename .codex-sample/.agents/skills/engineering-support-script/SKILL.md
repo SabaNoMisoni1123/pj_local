@@ -1,6 +1,6 @@
 ---
 name: engineering-support-script
-description: Use when creating, reviewing, fixing, or explaining small scripts, data transformations, automation helpers, API examples, tests, validation checks, or project tools. Japanese triggers: スクリプト作成, 自動化, データ変換.
+description: "Use when creating, reviewing, fixing, or explaining small scripts, data transformations, automation helpers, API examples, tests, validation checks, or project tools. Japanese triggers: スクリプト作成, 自動化, データ変換."
 ---
 
 # Engineering Support Script

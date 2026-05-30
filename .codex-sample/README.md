@@ -98,7 +98,7 @@ skill は、エージェントが必要時に読み込む作業手順です。
 ```markdown
 ---
 name: business-domain-task-name
-description: Use when the user asks to ...
+description: "Use when the user asks to ..."
 ---
 
 # Task Name

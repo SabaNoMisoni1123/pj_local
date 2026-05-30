@@ -54,3 +54,10 @@ Answer in Japanese. All output will also be in Japanese.
 - 新規作成・編集するテキストファイルは、原則として UTF-8（BOM なし）で保存する。
 - 特に `SKILL.md` は UTF-8 BOM 付きで作成・保存しない。
 - PowerShell でファイルを書き出す場合、BOM が付かない方法を選ぶ。既存ファイルの先頭に `EF BB BF` が付与されていないか、必要に応じて確認する。
+
+## `SKILL.md` frontmatter
+
+- `SKILL.md` の YAML frontmatter は、原則として `name` と `description` のみで構成する。
+- `description` は YAML パースエラーを避けるため、原則としてダブルクォートで囲む。特に `Japanese triggers:` など、値の中にコロンを含める場合は必ずクォートする。
+- `description` 内でダブルクォートを使う必要がある場合は、別表現に置き換えるか YAML として正しくエスケープする。
+- `SKILL.md` を追加・編集した後は、frontmatter の `name`、`description`、親ディレクトリ名の整合、未クォートのコロン、UTF-8 BOM の有無を確認する。

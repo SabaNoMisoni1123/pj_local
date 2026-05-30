@@ -1,6 +1,6 @@
 ---
 name: document-production-report-draft
-description: Use when drafting, structuring, rewriting, or improving reports, summaries, explanatory documents, or business documents from source materials. Japanese triggers: 報告書ドラフト, 要約, 業務文書.
+description: "Use when drafting, structuring, rewriting, or improving reports, summaries, explanatory documents, or business documents from source materials. Japanese triggers: 報告書ドラフト, 要約, 業務文書."
 ---
 
 # Document Production Report Draft

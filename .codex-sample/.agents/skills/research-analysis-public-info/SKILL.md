@@ -1,6 +1,6 @@
 ---
 name: research-analysis-public-info
-description: Use when researching, comparing, summarizing, or organizing public information, literature, market data, competitors, policies, statistics, laws, standards, current facts, or external sources. Japanese triggers: 公開情報調査, 文献調査, 市場調査.
+description: "Use when researching, comparing, summarizing, or organizing public information, literature, market data, competitors, policies, statistics, laws, standards, current facts, or external sources. Japanese triggers: 公開情報調査, 文献調査, 市場調査."
 ---
 
 # Research Analysis Public Information

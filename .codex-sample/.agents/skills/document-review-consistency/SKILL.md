@@ -1,6 +1,6 @@
 ---
 name: document-review-consistency
-description: Use when reviewing documents, reports, minutes, specifications, slides, or tables for inconsistencies, contradictions, missing evidence, terminology mismatch, dates, numbers, or references. Japanese triggers: 整合性確認, 矛盾チェック, 用語不一致.
+description: "Use when reviewing documents, reports, minutes, specifications, slides, or tables for inconsistencies, contradictions, missing evidence, terminology mismatch, dates, numbers, or references. Japanese triggers: 整合性確認, 矛盾チェック, 用語不一致."
 ---
 
 # Document Review Consistency

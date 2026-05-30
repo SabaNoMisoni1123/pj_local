@@ -1,6 +1,6 @@
 ---
 name: visual-production-diagram
-description: Use when creating, revising, structuring, or proposing business diagrams, visual explanations, slide visuals, screen concepts, charts, Mermaid diagrams, or image-generation briefs. Japanese triggers: 図解, Mermaid, 画像生成プロンプト.
+description: "Use when creating, revising, structuring, or proposing business diagrams, visual explanations, slide visuals, screen concepts, charts, Mermaid diagrams, or image-generation briefs. Japanese triggers: 図解, Mermaid, 画像生成プロンプト."
 ---
 
 # Visual Production Diagram

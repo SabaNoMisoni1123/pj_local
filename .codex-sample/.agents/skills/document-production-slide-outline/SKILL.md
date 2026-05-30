@@ -1,6 +1,6 @@
 ---
 name: document-production-slide-outline
-description: Use when creating slide decks, PowerPoint outlines, Marp materials, storylines, slide-by-slide messages, exhibit plans, or consulting-style page structures. Japanese triggers: スライド構成, 資料構成, 図表案.
+description: "Use when creating slide decks, PowerPoint outlines, Marp materials, storylines, slide-by-slide messages, exhibit plans, or consulting-style page structures. Japanese triggers: スライド構成, 資料構成, 図表案."
 ---
 
 # Document Production Slide Outline

@@ -1,6 +1,6 @@
 ---
 name: communication-meeting-agenda
-description: Use when creating or revising meeting agendas, pre-meeting notes, discussion points, facilitation plans, stakeholder briefs, or participant requests. Japanese triggers: 会議アジェンダ, 議題, 事前メモ.
+description: "Use when creating or revising meeting agendas, pre-meeting notes, discussion points, facilitation plans, stakeholder briefs, or participant requests. Japanese triggers: 会議アジェンダ, 議題, 事前メモ."
 ---
 
 # Communication Meeting Agenda

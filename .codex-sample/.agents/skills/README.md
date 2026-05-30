@@ -37,7 +37,7 @@ Each `SKILL.md` should stay concise, executable, and portable. Use this structur
 ```markdown
 ---
 name: business-domain-task-name
-description: Use when the user asks to ...
+description: "Use when the user asks to ..."
 ---
 
 # Task Name
@@ -76,6 +76,8 @@ Do not store project-specific facts or working notes inside this skill directory
 ## Design Rules
 
 - Write `description` as the trigger condition. Include the user requests, contexts, and artifact types that should activate the skill.
+- Quote `description` with double quotes. This is required when the value contains a colon, such as `Japanese triggers:`, and is recommended for all descriptions to avoid YAML front matter parse errors.
+- Avoid literal double quotes inside `description`; reword them or escape them as valid YAML.
 - Keep `SKILL.md` focused on executable procedure, output contract, and quality checks.
 - Move long examples, detailed criteria, schemas, or style guides into `references/` and link to them from `SKILL.md`.
 - Put deterministic, repeated processing in `scripts/` when a script would be more reliable than natural-language instructions.
@@ -99,7 +101,7 @@ The directory name should match the front matter `name`.
 ```markdown
 ---
 name: business-domain-task-name
-description: Use when the user asks to ...
+description: "Use when the user asks to ..."
 ---
 
 # Task Name

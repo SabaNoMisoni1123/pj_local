@@ -1,6 +1,6 @@
 ---
 name: document-review-logic-structure
-description: Use when reviewing reports, slide decks, proposals, or memos for storyline, logic, issue alignment, conclusion-evidence fit, recommendations, or consulting-style narrative. Japanese triggers: 論理構成レビュー, ストーリー, 結論と根拠.
+description: "Use when reviewing reports, slide decks, proposals, or memos for storyline, logic, issue alignment, conclusion-evidence fit, recommendations, or consulting-style narrative. Japanese triggers: 論理構成レビュー, ストーリー, 結論と根拠."
 ---
 
 # Document Review Logic Structure

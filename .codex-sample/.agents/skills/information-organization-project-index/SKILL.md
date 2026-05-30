@@ -1,6 +1,6 @@
 ---
 name: information-organization-project-index
-description: Use when creating, updating, or reviewing a project file index, file inventory, source inventory, document register, access map, folder map, or material catalog. For filename-only indexes use information-organization-file-name-index. Japanese triggers: 資料索引, ファイル一覧, source inventory.
+description: "Use when creating, updating, or reviewing a project file index, file inventory, source inventory, document register, access map, folder map, or material catalog. For filename-only indexes use information-organization-file-name-index. Japanese triggers: 資料索引, ファイル一覧, source inventory."
 ---
 
 # Information Organization Project Index

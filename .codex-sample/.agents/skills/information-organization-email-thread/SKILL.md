@@ -1,6 +1,6 @@
 ---
 name: information-organization-email-thread
-description: Use when inspecting, summarizing, organizing, or analyzing saved email threads, .eml files, mail.yml exports, Outlook messages, or email conversations. Prefer .eml. Japanese triggers: メール整理, メールスレッド, .eml.
+description: "Use when inspecting, summarizing, organizing, or analyzing saved email threads, .eml files, mail.yml exports, Outlook messages, or email conversations. Prefer .eml. Japanese triggers: メール整理, メールスレッド, .eml."
 ---
 
 # Information Organization Email Thread

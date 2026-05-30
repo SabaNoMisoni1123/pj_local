@@ -1,6 +1,6 @@
 ---
 name: information-organization-file-name-index
-description: Use when creating a Japanese file-name index, folder map, or AI-agent retrieval memo from file and folder names only. Do not use for full content review. Japanese triggers: ファイル名索引, フォルダマップ, 探索メモ.
+description: "Use when creating a Japanese file-name index, folder map, or AI-agent retrieval memo from file and folder names only. Do not use for full content review. Japanese triggers: ファイル名索引, フォルダマップ, 探索メモ."
 ---
 
 # Information Organization File Name Index

@@ -1,6 +1,6 @@
 ---
 name: research-analysis-issue-structuring
-description: Use when structuring issues, defining research questions, creating hypotheses, building issue trees, designing analysis approaches, or organizing consulting-style problem statements. Japanese triggers: 論点整理, 仮説, issue tree.
+description: "Use when structuring issues, defining research questions, creating hypotheses, building issue trees, designing analysis approaches, or organizing consulting-style problem statements. Japanese triggers: 論点整理, 仮説, issue tree."
 ---
 
 # Research Analysis Issue Structuring

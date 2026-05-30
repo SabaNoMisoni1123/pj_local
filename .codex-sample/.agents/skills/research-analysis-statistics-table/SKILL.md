@@ -1,6 +1,6 @@
 ---
 name: research-analysis-statistics-table
-description: Use when summarizing, comparing, validating, or creating tables from statistics, numeric datasets, Excel, CSV, public data tables, indicators, survey results, market data, time series, or quantitative evidence. Japanese triggers: 統計表, 数値データ, CSV集計.
+description: "Use when summarizing, comparing, validating, or creating tables from statistics, numeric datasets, Excel, CSV, public data tables, indicators, survey results, market data, time series, or quantitative evidence. Japanese triggers: 統計表, 数値データ, CSV集計."
 ---
 
 # Research Analysis Statistics Table

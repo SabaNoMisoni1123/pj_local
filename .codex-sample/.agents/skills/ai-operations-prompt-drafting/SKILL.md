@@ -1,6 +1,6 @@
 ---
 name: ai-operations-prompt-drafting
-description: Use when drafting or improving prompts, task briefs, AI-agent instructions, work orders, generation prompts, or quality criteria for business work. Japanese triggers: プロンプト, AI指示, 作業依頼.
+description: "Use when drafting or improving prompts, task briefs, AI-agent instructions, work orders, generation prompts, or quality criteria for business work. Japanese triggers: プロンプト, AI指示, 作業依頼."
 ---
 
 # AI Operations Prompt Drafting

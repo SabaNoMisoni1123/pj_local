@@ -1,6 +1,6 @@
 ---
 name: ai-operations-agents-update
-description: Use when creating, reviewing, or proposing updates to AGENTS.md, Codex operating rules, project agent instructions, or repository-specific guidance. Japanese triggers: AGENTS更新, 運用ルール, エージェント指示.
+description: "Use when creating, reviewing, or proposing updates to AGENTS.md, Codex operating rules, project agent instructions, or repository-specific guidance. Japanese triggers: AGENTS更新, 運用ルール, エージェント指示."
 ---
 
 # AI Operations AGENTS Update
