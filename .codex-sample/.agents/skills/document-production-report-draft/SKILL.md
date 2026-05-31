@@ -1,6 +1,6 @@
 ---
 name: document-production-report-draft
-description: "Use when drafting, structuring, rewriting, or improving reports, summaries, explanatory documents, or business documents from source materials. Japanese triggers: 報告書ドラフト, 要約, 業務文書."
+description: "Use when drafting, structuring, rewriting, or improving reports, summaries, README files, public/external explanatory documents, or business documents from source materials. Japanese triggers: 報告書ドラフト, 要約, README, 公開資料, 業務文書."
 ---
 
 # Document Production Report Draft
@@ -16,6 +16,7 @@ Draft evidence-grounded documents that separate facts, interpretation, assumptio
 3. Draft project-specific content only within evidence-supported limits.
 4. Use `不明` or placeholders for unconfirmed names, dates, amounts, owners, or deadlines.
 5. Separate facts, interpretation, recommendations, assumptions, and open questions.
+6. For public or third-party-facing drafts, exclude agent/user work context, private notes, local folder details, draft process notes, and agent TODOs from the publishable body.
 
 ## Output
 
@@ -29,9 +30,16 @@ Use Japanese unless requested otherwise. Recommended sections:
 - 不明点・要確認
 - 次に必要な作業
 
+For public or third-party-facing drafts, separate:
+
+- 公開本文案: publishable body only
+- 作成者向けメモ: confirmations, remaining work, options, and non-public notes
+
 ## Quality Checks
 
 - Align with audience, decision context, and requested format.
+- For public artifacts, ensure a third-party reader can understand the body without private project context.
+- Keep TODOs, open questions, and agent-side next actions out of the publishable body.
 - Keep headings parallel and specific enough for review.
 - Do not polish unsupported content into apparent facts.
 - Use markitdown-mcp only when non-text sources must be inspected; cite originals and note conversion limits.
