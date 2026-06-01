@@ -81,12 +81,16 @@ Codex は起動時に `AGENTS.md` を読み込む。
 
 ### 置き場所
 
-- 個人共通：`~/.codex/config.toml`
-- リポジトリ固有：`<repo>/.codex/config.toml`
+- プロジェクト固有：`<repo>/.codex/config.toml`
+- 個人環境側：`~/.codex/config.toml`
 
 ### 適用順序
 
-個人共通設定を基本とし、必要に応じてリポジトリ固有設定を置く。
+このテンプレートでは、モデル、承認ポリシー、サンドボックス、MCP などの運用設定はプロジェクト固有の `.codex/config.toml` に集約する。
+
+`~/.codex/config.toml` は、プロジェクトの `trust_level` だけを扱う個人環境側の台帳とし、プロジェクト共通運用設定は置かない。
+
+ただし、このテンプレート管理リポジトリ自身では Codex 設定の誤適用を避けるため、雛形ファイル名を `codex_config_template.toml` とする。インストーラーが移植先でだけ `.codex/config.toml` として配置する。
 
 ### 優先順位
 
@@ -96,12 +100,19 @@ Codex は起動時に `AGENTS.md` を読み込む。
 ### 最小構成例
 
 ```toml
-# ~/.codex/config.toml
+# <repo>/.codex/config.toml
 
 model_reasoning_effort = "low"
 model_verbosity = "low"
 model_reasoning_summary = "concise"
 project_doc_max_bytes = 12000
+```
+
+```toml
+# ~/.codex/config.toml
+
+[projects.'c:\path\to\project']
+trust_level = "trusted"
 ```
 
 ### 各設定の意味
@@ -277,13 +288,20 @@ Codex への指示例：
 
 ## 9. 実用上のおすすめ設定
 
-### `~/.codex/config.toml`
+### `<repo>/.codex/config.toml`
 
 ```toml
 model_reasoning_effort = "low"
 model_verbosity = "low"
 model_reasoning_summary = "concise"
 project_doc_max_bytes = 12000
+```
+
+### `~/.codex/config.toml`
+
+```toml
+[projects.'c:\path\to\project']
+trust_level = "trusted"
 ```
 
 ### `AGENTS.md`

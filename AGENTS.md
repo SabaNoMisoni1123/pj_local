@@ -32,7 +32,7 @@ Answer in Japanese. All output will also be in Japanese.
 `.codex-sample` に保存してよいものは、原則として以下に限ります。
 
 - 移植先プロジェクトのルートに置く `AGENTS.md` の雛形。
-- Codex 設定の雛形。現状は `.codex-sample/config.toml` に置き、移植時は `.codex/config.toml` として扱う。
+- Codex 設定の雛形。現状は `.codex-sample/codex_config_template.toml` に置き、移植時はインストーラーが `.codex/config.toml` として配置する。
 - 移植先で使う汎用的な業務運用ルール、業務カット、テンプレート。
 - Agent Skills として再利用する `.agents/skills/*/SKILL.md` と、その skill 実行に必要な `references/`、`scripts/`、`assets/`、`evals/`。
 - 新規導入直後に空で使う `project-local/` の雛形。ただし、案件情報を記入した後の `project-local/` は再配布対象外。

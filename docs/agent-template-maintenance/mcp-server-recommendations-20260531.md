@@ -255,7 +255,7 @@
 
 ## 導入時の設定例
 
-`.codex-sample/config.toml` に追記する場合の例です。実際には案件ごとに必要なものだけコメント解除します。
+`.codex-sample/codex_config_template.toml` に追記し、移植先では `.codex/config.toml` として配置する場合の例です。実際には案件ごとに必要なものだけコメント解除します。
 
 ```toml
 # 最新ドキュメント確認

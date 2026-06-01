@@ -88,6 +88,7 @@ esac
 script_dir=$(CDPATH= cd "$(dirname "$0")" && pwd -P)
 repo_root=$(CDPATH= cd "$script_dir/.." && pwd -P)
 sample_dir="$repo_root/.codex-sample"
+codex_config_template="$sample_dir/codex_config_template.toml"
 
 if [ ! -d "$sample_dir" ]; then
   printf 'Error: .codex-sample not found: %s\n' "$sample_dir" >&2
@@ -106,7 +107,7 @@ log "Target: $target_root"
 
 remove_file_if_same "$sample_dir/AGENTS.md" "$target_root/AGENTS.md" "AGENTS.md"
 remove_path_if_exists "$target_root/.agents" ".agents"
-remove_file_if_same "$sample_dir/config.toml" "$target_root/.codex/config.toml" ".codex/config.toml"
+remove_file_if_same "$codex_config_template" "$target_root/.codex/config.toml" ".codex/config.toml"
 remove_path_if_exists "$target_root/domains_ja" "domains_ja"
 remove_path_if_exists "$target_root/operating_ja" "operating_ja"
 remove_path_if_exists "$target_root/templates" "templates"

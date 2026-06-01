@@ -13,7 +13,7 @@ Description:
 Copy mapping:
   .codex-sample/AGENTS.md       -> <project-root>/AGENTS.md
   .codex-sample/.agents/        -> <project-root>/.agents/
-  .codex-sample/config.toml     -> <project-root>/.codex/config.toml
+  .codex-sample/codex_config_template.toml -> <project-root>/.codex/config.toml
   .codex-sample/domains_ja/     -> <project-root>/domains_ja/
   .codex-sample/operating_ja/   -> <project-root>/operating_ja/
   .codex-sample/templates/      -> <project-root>/templates/
@@ -76,6 +76,7 @@ esac
 script_dir=$(CDPATH= cd "$(dirname "$0")" && pwd -P)
 repo_root=$(CDPATH= cd "$script_dir/.." && pwd -P)
 sample_dir="$repo_root/.codex-sample"
+codex_config_template="$sample_dir/codex_config_template.toml"
 
 if [ ! -d "$sample_dir" ]; then
   printf 'Error: .codex-sample not found: %s\n' "$sample_dir" >&2
@@ -91,7 +92,7 @@ log "Target: $target_root"
 
 copy_file_if_absent "$sample_dir/AGENTS.md" "$target_root/AGENTS.md" "AGENTS.md"
 copy_dir_if_absent "$sample_dir/.agents" "$target_root/.agents" ".agents"
-copy_file_if_absent "$sample_dir/config.toml" "$target_root/.codex/config.toml" ".codex/config.toml"
+copy_file_if_absent "$codex_config_template" "$target_root/.codex/config.toml" ".codex/config.toml"
 copy_dir_if_absent "$sample_dir/domains_ja" "$target_root/domains_ja" "domains_ja"
 copy_dir_if_absent "$sample_dir/operating_ja" "$target_root/operating_ja" "operating_ja"
 copy_dir_if_absent "$sample_dir/templates" "$target_root/templates" "templates"

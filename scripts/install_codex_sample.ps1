@@ -56,6 +56,7 @@ function Copy-DirectoryIfAbsent {
 $scriptDir = Split-Path -Parent $PSCommandPath
 $repoRoot = (Resolve-Path -LiteralPath (Join-Path $scriptDir "..")).Path
 $sampleDir = Join-Path $repoRoot ".codex-sample"
+$codexConfigTemplate = Join-Path $sampleDir "codex_config_template.toml"
 
 if (-not (Test-Path -LiteralPath $sampleDir -PathType Container)) {
     throw ".codex-sample not found: $sampleDir"
@@ -81,7 +82,7 @@ Copy-DirectoryIfAbsent `
     -Label ".agents"
 
 Copy-FileIfAbsent `
-    -Source (Join-Path $sampleDir "config.toml") `
+    -Source $codexConfigTemplate `
     -Destination (Join-Path (Join-Path $targetRoot ".codex") "config.toml") `
     -Label ".codex/config.toml"
 
