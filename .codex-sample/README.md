@@ -239,6 +239,10 @@ project-local/
 
 `project-local/` は、新規プロジェクトにまだ同名フォルダがない場合だけ、空テンプレートとしてコピーします。既存 `project-local/` がある場合は上書きせず、必要なテンプレートだけ差分提案にしてください。
 
+更新用スクリプトは、通常は共通テンプレート領域だけを `.codex-sample` の内容へ同期します。`scripts/update_codex_sample.ps1 <project-root> -Force` または `scripts/update_codex_sample.sh --force <project-root>` を使うと、既存 `README.md` を強制的に置き換えます。
+
+`.agents/`、`domains_ja/`、`operating_ja/`、`templates/` はディレクトリ単位で同期するため、雛形側で廃止された配下ファイルは移植先からも削除されます。`project-local/` は案件固有情報を含み、様式変更も想定しないため、`--force` / `-Force` 指定時も既存ディレクトリは削除・置換しません。存在しない場合だけ空テンプレートとしてコピーします。
+
 既存 `AGENTS.md` がある場合は上書きせず、`templates/agents_update_proposal_template.md` を使って追記案を作成し、人間が必要な範囲だけ反映してください。
 
 `codex_config_template.toml` は、移植先ではインストーラーにより `.codex/config.toml` として扱います。既存 `.codex/config.toml` がある場合は上書きせず、必要な設定だけ差分提案にしてください。`$HOME/.codex/config.toml` は標準コピー対象外とし、各利用者がプロジェクトの `trust_level` だけを追加します。
