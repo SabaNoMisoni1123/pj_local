@@ -105,6 +105,11 @@ shell_snapshot = true
 # [plugins."google-drive@openai-curated"]
 # enabled = true
 
+# [mcp_servers.hourei]
+# command = "npx"
+# args = ["-y",  "hourei-mcp-server"]
+
+
 # project trust
 # プロジェクトの信頼設定だけは $HOME/.codex/config.toml で管理する。
 # この雛形には [projects.'...'] を置かない。
