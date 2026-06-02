@@ -17,7 +17,7 @@ Create research outputs that separate sourced facts, interpretation, unknowns, a
 4. Prefer primary sources, official publications, original statistics, laws, standards, and source documents.
 5. Record source owner, publication date or access date, URL or path, and the supported claim.
 6. Separate facts, interpretation, assumptions, unknowns, and confirmation items.
-7. Do not use old, generated, draft, converted, or low-confidence sources as sole evidence.
+7. Do not use files under `old/`, `_old/`, or similar obsolete-information directories at all. Do not use generated, draft, converted, or low-confidence sources as sole evidence.
 8. Report limitations, gaps, conflicting evidence, and recommended next checks.
 
 ## Output

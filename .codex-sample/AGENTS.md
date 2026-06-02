@@ -29,6 +29,7 @@ Use these files as the standard references:
 - `operating_ja/project_intake.md` for new-project intake.
 - `operating_ja/quality_check.md` for evidence, numbers, dates, terminology, TODOs, and residual risks.
 - `operating_ja/naming_rules.md` for output file naming and overwrite prevention.
+- `operating_ja/excluded_sources.md` for directories and sources that must not be read or used.
 - `operating_ja/low_confidence_sources.md` for generated, temporary, converted, draft, sample, or otherwise low-confidence sources.
 - `operating_ja/project_local_storage.md` for project-specific Codex working context.
 - `operating_ja/agents_update_policy.md` for AGENTS.md update proposals.
@@ -40,6 +41,8 @@ When a relevant `SKILL.md` exists, follow both the skill and the common operatin
 For derivative business outputs, create a new file by default. Edit, delete, rename, move, or overwrite existing files only when the user explicitly requests it and the active project rules allow it.
 
 Do not treat low-confidence sources as sole evidence. If such sources are used, label them as low-confidence and prefer primary sources for confirmation.
+
+Treat files under `old/`, `_old/`, or similarly named obsolete-information directories as excluded sources, not merely low-confidence sources. Do not read, cite, summarize, index as evidence, or use their filenames, metadata, or contents for inference. For inventory completeness, you may record only the excluded directory path and the reason it was excluded.
 
 ## Portability
 

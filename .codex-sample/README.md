@@ -60,6 +60,7 @@ OpenAI Codex の公式ドキュメントでは、skill は Agent Skills open sta
 │  ├─ quality_check.md
 │  ├─ naming_rules.md
 │  ├─ work_log.md
+│  ├─ excluded_sources.md
 │  ├─ low_confidence_sources.md
 │  ├─ project_local_storage.md
 │  └─ agents_update_policy.md

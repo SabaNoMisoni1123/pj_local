@@ -14,9 +14,10 @@ Check business outputs before use and surface major defects, unverified items, a
 1. Check whether claims have evidence.
 2. Check dates, numbers, terminology, owners, deadlines, references, and format.
 3. Check for missing or unsupported TODOs, decisions, and unresolved issues.
-4. Check whether unknowns, assumptions, and low-confidence sources are marked.
-5. For public or third-party-facing artifacts, check for private context leakage, unexplained internal assumptions, and TODO/open-question text mixed into the publishable body.
-6. Report checks that could not be performed and remaining risks.
+4. Check that evidence does not come from `old/`, `_old/`, or similar excluded directories.
+5. Check whether unknowns, assumptions, and low-confidence sources are marked.
+6. For public or third-party-facing artifacts, check for private context leakage, unexplained internal assumptions, and TODO/open-question text mixed into the publishable body.
+7. Report checks that could not be performed and remaining risks.
 
 ## Output
 

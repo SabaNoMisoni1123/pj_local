@@ -36,6 +36,7 @@ Glossary tables should use `用語`, `読み・英語表記`, `種別`, `定義�
 
 - Do not invent definitions without source support.
 - Preserve official names when confirmed.
+- Do not use paths, filenames, metadata, or contents under `old/`, `_old/`, or similar excluded directories as terminology evidence.
 - Flag low-confidence, generated, draft, or converted sources.
 - Use markitdown-mcp only when non-text materials must be inspected.
 - Follow active `AGENTS.md` and `operating_ja/`; do not store project-specific facts in this skill.
