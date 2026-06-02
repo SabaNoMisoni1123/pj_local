@@ -89,6 +89,8 @@ shell_snapshot = true
 
 # [mcp_servers.markitdown]
 # command = "markitdown-mcp"
+# [mcp_servers.markitdown.tools.convert_to_markdown]
+# approval_mode = "approve"
 
 # [mcp_servers.ultracite]
 # command = "npx"
