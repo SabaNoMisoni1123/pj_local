@@ -17,7 +17,8 @@ Check business outputs before use and surface major defects, unverified items, a
 4. Check that evidence does not come from `old/`, `_old/`, or similar excluded directories.
 5. Check whether unknowns, assumptions, and low-confidence sources are marked.
 6. For public or third-party-facing artifacts, check for private context leakage, unexplained internal assumptions, and TODO/open-question text mixed into the publishable body.
-7. Report checks that could not be performed and remaining risks.
+7. For external-facing email drafts, compare numbers, dates, units, sizes, amounts, deadlines, organization names, person names, commitments, and decision status against the confirmed source item by item.
+8. Report checks that could not be performed and remaining risks.
 
 ## Output
 
@@ -37,6 +38,7 @@ Issue tables should use `No`, `重要度`, `区分`, `指摘内容`, `根拠`, `
 - Lead with the highest-severity findings.
 - Separate evidence-backed findings from reviewer inference.
 - Treat private context leakage or author-note/body mixing in public artifacts as high severity.
+- Treat incorrect, unsupported, or source-mismatched high-impact facts in external-facing email drafts as high-severity defects.
 - Do not rewrite the whole artifact unless explicitly requested.
 - Use markitdown-mcp only when non-text sources must be inspected; report unverifiable checks.
 - Follow active `AGENTS.md` and `operating_ja/`; do not store project-specific facts in this skill.
