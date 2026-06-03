@@ -30,6 +30,7 @@ skill の正式な発見単位は `../.agents/skills/*/SKILL.md` であり、こ
 | 調査・分析 | 公開情報調査 | `research-analysis-public-info` | 公開情報、文献、統計、外部資料 | 調査メモ、比較表、論点整理 |
 | AI運用 | プロンプト作成 | `ai-operations-prompt-drafting` | 目的、資料、制約 | AI向け指示文 |
 | AI運用 | AGENTS更新提案 | `ai-operations-agents-update` | 既存AGENTS、変更方針 | 更新提案 |
+| AI運用 | Codex改善リクエスト | `ai-operations-change-request` | 改善要望、業務利用時の課題、既存設定 | 改善リクエスト、反映管理メモ |
 | AI運用 | skill設計 | `ai-operations-skill-design` | 業務要件、既存skill | skill設計案 |
 | 開発・ツール支援 | 簡易スクリプト作成 | `engineering-support-script` | 入力データ、既存コード、処理要件 | スクリプト、変換結果、検証メモ |
 | ビジュアル制作 | 図解作成 | `visual-production-diagram` | 論点、構成案、根拠資料 | 図解案、Mermaid図、画像生成プロンプト |

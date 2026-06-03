@@ -49,6 +49,18 @@ Answer in Japanese. All output will also be in Japanese.
 
 既存の `.codex-sample` 内に再配布向きでないファイルを見つけた場合は、原則として内容を評価したうえで `.codex-sample` 外へ移す提案を行います。単に削除せず、必要なら移動先と移植対象から除外する理由を明記します。
 
+## Codex設定改善リクエスト管理
+
+実際の業務利用で見つかった Codex 設定、`AGENTS.md`、`.codex-sample`、skill、運用ルール、テンプレートの修正・更新・機能追加要望は、`docs/agent-template-maintenance/change-requests/` に Markdown 形式で保存します。
+
+新規リクエストは `docs/agent-template-maintenance/change-requests/change_request_template.md` を基に作成し、`docs/agent-template-maintenance/change-requests/request-index.md` に追記します。ファイル名は `CR-YYYYMMDD-短い内容.md` を推奨します。
+
+リクエストを踏まえて反映作業を行う場合は、`docs/agent-template-maintenance/change-requests/README.md` の反映ワークフローに従い、採用判断、対象ファイル、検証内容、残課題、ステータス更新を記録します。
+
+未採用・検討中の要望、業務利用中の具体事例、実案件情報は `.codex-sample` に直接保存しません。`.codex-sample` へ反映してよいのは、採用判断後に汎用雛形として使える設定、運用ルール、skill、テンプレートだけです。
+
+移植先プロジェクトで改善要望を起票するための汎用部品は、`.codex-sample/templates/codex_change_request_template.md` と `.codex-sample/.agents/skills/ai-operations-change-request/SKILL.md` に置きます。
+
 ## 文字コード
 
 - 新規作成・編集するテキストファイルは、原則として UTF-8（BOM なし）で保存する。
