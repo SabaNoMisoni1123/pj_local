@@ -23,11 +23,11 @@ Explicit requests, assigned actions, deadlines, pending decisions, unresolved qu
 
 ## Output
 
-Use CSV for task ledgers; otherwise use a Japanese table. Required columns:
+For action item or TODO整理 replies, use the standard Japanese table format in `templates/action_items_template.md`.
 
-```csv
-id,status,priority,task,owner,due_date,source_file,source_location,evidence_type,notes
-```
+Required columns: `No`, `実行主体`, `実行内容`, `期日`, `重要度`, `確認状態/補足`.
+
+Use CSV only when the user requests a CSV or a machine-readable task ledger. Preserve the same concepts as the standard table.
 
 ## Quality Checks
 

@@ -119,6 +119,34 @@ function Update-Directory {
     Write-Log "[update] ${Label}: $Destination"
 }
 
+function Copy-FileIfAbsent {
+    param(
+        [Parameter(Mandatory = $true)][string]$Source,
+        [Parameter(Mandatory = $true)][string]$Destination,
+        [Parameter(Mandatory = $true)][string]$Label
+    )
+
+    Assert-TargetChildPath -Path $Destination
+
+    if (-not (Test-Path -LiteralPath $Source -PathType Leaf)) {
+        if (Test-Path -LiteralPath $Destination) {
+            Write-Log "[skip] ${Label}: source not found and existing local file is preserved: $Destination"
+        } else {
+            Write-Log "[skip] ${Label}: source not found: $Destination"
+        }
+        return
+    }
+
+    if (Test-Path -LiteralPath $Destination) {
+        Write-Log "[skip] ${Label}: preserve existing local file: $Destination"
+        return
+    }
+
+    Ensure-ParentDirectory -Path $Destination
+    Copy-Item -LiteralPath $Source -Destination $Destination
+    Write-Log "[copy] ${Label}: $Destination"
+}
+
 function Copy-DirectoryIfAbsent {
     param(
         [Parameter(Mandatory = $true)][string]$Source,
@@ -171,7 +199,7 @@ $script:TargetRootForSafety = $targetRoot
 Write-Log "Source: $sampleDir"
 Write-Log "Target: $targetRoot"
 if ($Force) {
-    Write-Log "Mode: force (README.md will be replaced; project-local/ is preserved)"
+    Write-Log "Mode: force (README.md will be replaced; .codex/config.toml and project-local/ are preserved)"
 }
 
 Update-File `
@@ -184,7 +212,7 @@ Update-Directory `
     -Destination (Join-Path $targetRoot ".agents") `
     -Label ".agents"
 
-Update-File `
+Copy-FileIfAbsent `
     -Source $codexConfigTemplate `
     -Destination (Join-Path (Join-Path $targetRoot ".codex") "config.toml") `
     -Label ".codex/config.toml"

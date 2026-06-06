@@ -11,15 +11,17 @@ Description:
   Codex 運用環境を更新します。
 
 Update policy:
-  - AGENTS.md, .codex/config.toml, .agents/, domains_ja/, operating_ja/,
-    templates/ は .codex-sample の内容で置き換えます。
+  - AGENTS.md, .agents/, domains_ja/, operating_ja/, templates/ は
+    .codex-sample の内容で置き換えます。
     これらの管理対象で .codex-sample から廃止されたファイルは削除します。
+  - .codex/config.toml は既存なら更新しません。
+    存在しない場合だけ codex_config_template.toml からコピーします。
   - project-local/ は案件固有情報を含み得るため、既存なら更新しません。
     存在しない場合だけ空テンプレートとしてコピーします。
   - README.md が雛形と同一なら更新します。既存 README.md が別内容なら、
     codex_setup_README.md を更新または作成します。
-  - --force 指定時も project-local/ は置き換えず、README.md だけ強制的に
-    置き換えます。
+  - --force 指定時も .codex/config.toml と project-local/ は置き換えず、
+    README.md だけ強制的に置き換えます。
 EOF
 }
 
@@ -95,6 +97,33 @@ replace_dir() {
   fi
   cp -R "$src" "$dest"
   log "[update] $label: $dest"
+}
+
+copy_file_if_absent() {
+  src=$1
+  dest=$2
+  label=$3
+
+  require_target_child "$dest"
+
+  if [ ! -f "$src" ]; then
+    if [ -e "$dest" ]; then
+      log "[skip] $label: source not found and existing local file is preserved: $dest"
+    else
+      log "[skip] $label: source not found: $dest"
+    fi
+    return
+  fi
+
+  if [ -e "$dest" ]; then
+    log "[skip] $label: preserve existing local file: $dest"
+    return
+  fi
+
+  parent=$(dirname "$dest")
+  mkdir -p "$parent"
+  cp "$src" "$dest"
+  log "[copy] $label: $dest"
 }
 
 copy_dir_if_absent() {
@@ -180,12 +209,12 @@ target_root=$(CDPATH= cd "$target_root" && pwd -P)
 log "Source: $sample_dir"
 log "Target: $target_root"
 if [ "$force" -eq 1 ]; then
-  log "Mode: force (README.md will be replaced; project-local/ is preserved)"
+  log "Mode: force (README.md will be replaced; .codex/config.toml and project-local/ are preserved)"
 fi
 
 replace_file "$sample_dir/AGENTS.md" "$target_root/AGENTS.md" "AGENTS.md"
 replace_dir "$sample_dir/.agents" "$target_root/.agents" ".agents"
-replace_file "$codex_config_template" "$target_root/.codex/config.toml" ".codex/config.toml"
+copy_file_if_absent "$codex_config_template" "$target_root/.codex/config.toml" ".codex/config.toml"
 replace_dir "$sample_dir/domains_ja" "$target_root/domains_ja" "domains_ja"
 replace_dir "$sample_dir/operating_ja" "$target_root/operating_ja" "operating_ja"
 replace_dir "$sample_dir/templates" "$target_root/templates" "templates"

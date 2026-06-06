@@ -62,7 +62,7 @@ exclude_tmpdir_env_var = true
 undo = true
 shell_snapshot = true
 
-# MCPサーバ
+# MCPサーバ =======================================
 #
 # トークン削減を優先する場合の基本方針:
 # - 常時有効にするMCPサーバは、そのプロジェクトで高頻度に使うものだけに絞る。
@@ -108,7 +108,15 @@ shell_snapshot = true
 # [mcp_servers.hourei]
 # command = "npx"
 # args = ["-y",  "hourei-mcp-server"]
+# [mcp_servers.hourei.env]
+# NODE_OPTIONS = "--use-system-ca"
+# [mcp_servers.hourei.tools.search_law]
+# approval_mode = "approve"
+# [mcp_servers.hourei.tools.get_law_data]
+# approval_mode = "approve"
 
+
+# ==============================================
 
 # project trust
 # プロジェクトの信頼設定だけは $HOME/.codex/config.toml で管理する。

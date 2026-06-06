@@ -6,6 +6,7 @@
 |---|---|---|---|---|---|---|---|---|
 | CR-20260603-01 | 2026-06-03 | Codex改善リクエスト受付・反映仕組みの追加 | ドキュメント / skill / テンプレート | 高 | 実装済み | [CR-20260603-change-request-workflow.md](CR-20260603-change-request-workflow.md) | `AGENTS.md`, `docs/agent-template-maintenance/change-requests/`, `.codex-sample/templates/codex_change_request_template.md`, `.codex-sample/.agents/skills/ai-operations-change-request/SKILL.md` | 受付、索引、反映ワークフロー、移植用テンプレート、専用skillを追加。 |
 | CR-20260603-email-fact-reconciliation | 2026-06-03 | 外部向けメール文案作成時の高影響項目照合フロー追加 | skill | 高 | 実装済み | [CR-20260603-email-fact-reconciliation.md](CR-20260603-email-fact-reconciliation.md) | `.codex-sample/.agents/skills/communication-email-draft/SKILL.md`, `.codex-sample/.agents/skills/document-review-quality-check/SKILL.md` | 外部向けメールの高影響項目抽出、根拠との項目単位照合、重大欠陥判定を追加。 |
+| CR-20260605-config-update-preserve | 2026-06-05 | 更新時に既存 `.codex/config.toml` を保持する | スクリプト / ドキュメント | 高 | 実装済み | [CR-20260605-config-update-preserve.md](CR-20260605-config-update-preserve.md) | `scripts/update_codex_sample.ps1`, `scripts/update_codex_sample.sh`, `.codex-sample/README.md` | 更新スクリプトで既存 `.codex/config.toml` を上書きせず、未存在時のみ雛形をコピーするよう変更。 |
 
 ## 記入ルール
 

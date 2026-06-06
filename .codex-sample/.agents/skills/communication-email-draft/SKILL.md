@@ -29,6 +29,8 @@ Use Japanese unless the user requests another language. Recommended sections:
 - 送付前の確認事項
 - 代替表現または短縮版
 
+When the user requests a send-mail data file or an application-convertible draft, use `templates/email_draft_datafile.yml` as the fixed output contract. Preserve the keys `subject`, `body`, `attachments`, `to`, `cc`, and `bcc` unless the user explicitly changes the application contract.
+
 ## Quality Checks
 
 - Match the relationship, business purpose, requested action, and deadline.
