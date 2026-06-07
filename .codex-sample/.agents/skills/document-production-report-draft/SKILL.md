@@ -1,6 +1,6 @@
 ---
 name: document-production-report-draft
-description: "Use when drafting, structuring, rewriting, or improving reports, summaries, README files, public/external explanatory documents, or business documents from source materials. Japanese triggers: 報告書ドラフト, 要約, README, 公開資料, 業務文書."
+description: "Use when the primary deliverable is a prose report, README, explanatory document, or business-document draft. Do not use for slide outlines, meeting minutes, emails, or review-only requests. Japanese triggers: 報告書ドラフト, README作成, 説明文書, 業務文書案."
 ---
 
 # Document Production Report Draft

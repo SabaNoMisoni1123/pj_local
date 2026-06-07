@@ -1,139 +1,176 @@
-# `.codex-python` 開発手順書
+# Python 開発向け Codex 環境整備手順書
 
-作成日: 2026-06-07  
-対象: Python ツール開発向け Codex / Agent Skills 指示文セット  
-成果物配置先: `.codex-python/`  
+作成日: 2026-06-07
+
+最終更新日: 2026-06-07
+
+対象: Python ツール開発を支援する Codex / Agent Skills 雛形
+
+雛形配置先: `.codex-sample/`
+
 保守資料配置先: `docs/agent-template-maintenance/`
 
 ## 1. 目的
 
-本手順書は、`.codex-python` を移植可能な雛形として設計、実装、監査するための実行手順を定める。
+本手順書は、既存の `.codex-sample` を、シンクタンク・コンサルティング業務支援に加えて Python ツール開発にも利用できる雛形へ拡張するための作業手順を定める。
 
-作業計画は `codex-python-instruction-set-workplan.md`、確定済みの初期スコープは `codex-python-initial-scope-20260602.md` を正本として参照する。本手順書は、それらを実際の開発作業へ落とし込むための順序、成果物、確認方法を示す。
+初期検討時は独立した `.codex-python/` の新設を想定していたが、その後のテンプレート更新とブランチ統合により、再配布・移植する雛形は `.codex-sample/` に集約する方針となった。以後、Python 向けの共通ルール、domain、skill、テンプレートも `.codex-sample/` に追加し、別の `.codex-python/` は作成しない。
 
-## 2. 基本ルール
-
-### 2.1 配置ルール
-
-- 移植先プロジェクトでそのまま使う雛形だけを `.codex-python/` に置く。
-- 調査結果、比較表、設計検討、監査レポート、作業記録は `docs/agent-template-maintenance/` に置く。
-- 実案件の情報、認証情報、ローカル絶対パス、実データ、実行ログ、キャッシュは `.codex-python/` に置かない。
-- `project-local/` には、新規導入時に空で使うテンプレートだけを置く。
-
-### 2.2 言語ルール
-
-- `SKILL.md` などエージェント向け指示は英語で作成する。
-- `README.md`、`operating_ja/`、`domains_ja/`、`templates/`、`project-local/` は日本語で作成する。
-- コード、コマンド、設定キー、API 名、ライブラリ名は原表記を使う。
-
-### 2.3 ファイルルール
-
-- テキストファイルは UTF-8、BOM なしで保存する。
-- `SKILL.md` の YAML frontmatter は原則として `name` と `description` のみにする。
-- `description` はダブルクォートで囲む。
-- `name`、親ディレクトリ名、一覧上の skill 名を一致させる。
-- 既存ファイルを変更する場合は、利用者の変更を消さず、必要な箇所だけを編集する。
-
-### 2.4 技術判断ルール
-
-- Python 3.11 以上を対象にする。
-- `pyproject.toml`、依存管理、テスト、formatter、linter、型チェックの方式は固定しない。
-- 既存プロジェクトの構成と目的を確認してから採用方式を決める。
-- ライブラリ、API、フレームワーク、設定項目は、可能な限り Context7 MCP で最新公式情報を確認する。
-- Context7 MCP で確認できない場合は、公式ドキュメントまたは公式リポジトリを参照する。
-- 公開 skill や公開リポジトリを利用する場合は、ライセンス、出典、改変範囲を記録する。
-
-## 3. 全体工程
-
-| 工程 | 内容 | 主な成果物 |
-|---|---|---|
-| 0 | 開始前確認 | 前提確認結果 |
-| 1 | 既存資産の棚卸し | 再利用候補一覧 |
-| 2 | 公式情報・公開資産の調査 | 公式情報確認メモ、公開資産調査メモ |
-| 3 | 情報設計 | 情報設計書、ファイル責務表 |
-| 4 | 基盤ファイル実装 | README、AGENTS、config、管理文書 |
-| 5 | 共通運用ルール実装 | `operating_ja/` |
-| 6 | domain 説明実装 | `domains_ja/` |
-| 7 | skill 実装 | 初期 `SKILL.md` 群 |
-| 8 | テンプレート実装 | `templates/`、`project-local/` |
-| 9 | 構造・内容監査 | 監査レポート、修正結果 |
-| 10 | 移植確認 | 導入手順、最終確認結果 |
-
-各工程は、直前の工程の完了条件を満たしてから開始する。
-
-## 4. 工程0: 開始前確認
-
-### 入力
+次の文書は初期要件を確認する参考資料として扱う。
 
 - `codex-python-questionnaire.md`
 - `codex-python-initial-scope-20260602.md`
 - `codex-python-instruction-set-workplan.md`
-- ルート `AGENTS.md`
+
+これらにある `.codex-python/` の配置記述より、本手順書とルート `AGENTS.md` の現行配置ルールを優先する。
+
+## 2. 現行構成を踏まえた更新方針
+
+### 2.1 旧計画からの変更点
+
+| 項目 | 旧計画 | 現行方針 |
+|---|---|---|
+| Python 向け雛形 | `.codex-python/` を新設 | `.codex-sample/` を拡張 |
+| Codex 設定雛形 | `.codex-python/config.toml` | `.codex-sample/codex_config_template.toml` |
+| 移植先の設定 | 必要に応じて配置 | `.codex/config.toml` として配置 |
+| 設定更新 | 未確定 | 既存 `.codex/config.toml` は上書きしない |
+| skill 配置 | `.agents/skills/` | 変更なし |
+| 改善要望管理 | 未定義 | `change-requests/` のワークフローに従う |
+| 既存資産との関係 | 構成だけ参考にする独立雛形 | 既存の共通ルールと skill を再利用・拡張 |
+
+### 2.2 配置原則
+
+- 移植先プロジェクトでそのまま使う汎用部品だけを `.codex-sample/` に置く。
+- 調査結果、設計メモ、比較表、監査レポート、作業記録は `docs/agent-template-maintenance/` に置く。
+- 実案件情報、認証情報、ローカル絶対パス、実データ、実行ログ、キャッシュは `.codex-sample/` に置かない。
+- `project-local/` には、新規導入時に空で使う雛形だけを置く。
+- Python 専用ルールを追加する前に、既存の `engineering-support-script` skill や共通運用ルールへの追記で対応できるか確認する。
+
+### 2.3 言語・ファイル原則
+
+- `SKILL.md` のエージェント向け手順は英語で作成する。
+- `README.md`、`operating_ja/`、`domains_ja/`、`templates/`、`project-local/` は日本語で作成する。
+- コード、コマンド、設定キー、API 名、ライブラリ名は原表記を使う。
+- テキストファイルは UTF-8、BOM なしで保存する。
+- `SKILL.md` の YAML frontmatter は原則として `name` と `description` のみにする。
+- `description` はダブルクォートで囲み、親ディレクトリ名と `name` を一致させる。
+
+### 2.4 技術判断原則
+
+- Python 3.11 以上を対象にする。
+- 既存プロジェクトの構成、依存管理、テスト、formatter、linter、型チェックを優先する。
+- `pyproject.toml`、pytest、ruff、mypy、pyright、uv、Poetry などを無条件の標準にしない。
+- ライブラリ、API、フレームワーク、設定項目は、可能な限り Context7 MCP で最新ドキュメントを確認する。
+- Context7 MCP で確認できない場合は、公式ドキュメントまたは公式リポジトリを参照する。
+- 公開 skill や公開リポジトリを利用する場合は、ライセンス、出典、改変範囲を保守資料へ記録する。
+
+## 3. 目標構成
+
+Python 対応後も、移植元の基本構成は次の形を維持する。
+
+```text
+.codex-sample/
+├─ README.md
+├─ AGENTS.md
+├─ codex_config_template.toml
+├─ .agents/
+│  ├─ AGENTS.md
+│  ├─ README.md
+│  └─ skills/
+│     ├─ README.md
+│     ├─ engineering-support-script/
+│     │  └─ SKILL.md
+│     └─ python-{task-name}/
+│        ├─ SKILL.md
+│        └─ 必要に応じて references/、scripts/、assets/、evals/
+├─ operating_ja/
+├─ domains_ja/
+├─ templates/
+└─ project-local/
+```
+
+移植先では `codex_config_template.toml` をそのまま置かず、次のように配置する。
+
+```text
+<project-root>/.codex/config.toml
+```
+
+## 4. 全体工程
+
+| 工程 | 内容 | 主な成果物 |
+|---|---|---|
+| 0 | 開始前確認 | 対象リクエスト、前提確認結果 |
+| 1 | 現行資産の棚卸し | 再利用・変更・追加の判断表 |
+| 2 | 公式情報・公開資産の調査 | 調査メモ |
+| 3 | 情報設計 | ファイル責務表、skill 境界表 |
+| 4 | 共通基盤の更新 | AGENTS、README、config 方針 |
+| 5 | 共通運用・domain の更新 | `operating_ja/`、`domains_ja/` |
+| 6 | Python skill の実装 | `SKILL.md` 群 |
+| 7 | テンプレートの実装 | `templates/`、必要最小限の `project-local/` |
+| 8 | 構造・内容監査 | 監査レポート、修正結果 |
+| 9 | 移植スクリプト確認 | 導入・更新・削除の確認結果 |
+
+## 5. 工程0: 開始前確認
 
 ### 作業
 
-1. 初期対象の利用者、タスク、言語、技術方針を再確認する。
-2. `.agents/skills/` を正式配置先として扱う。
-3. `.codex-python` と `.codex-sample` を統合しないことを確認する。
-4. 初期対象ファイルの追加・削除が必要になっていないか確認する。
-5. Windows 環境の `PIM` が何を指すか、実装に影響する時点で確認事項として記録する。
-
-### 成果物
-
-- 必要に応じて更新した初期スコープ決定メモ。
-- 未決事項一覧。
+1. ルート `AGENTS.md` と本手順書を読む。
+2. `git status --short` で未コミット変更を確認し、利用者の変更を上書きしない。
+3. `git log --oneline --decorate -20` で直近の構成変更を確認する。
+4. 初期要件は `codex-python-initial-scope-20260602.md` を参照し、配置は本手順書の現行方針へ読み替える。
+5. 作業が既存の改善リクエストに基づく場合は、対象ファイルと `change-requests/request-index.md` を確認する。
+6. 新規要望として管理すべき場合は、`change-requests/change_request_template.md` を使って起票する。
+7. Windows 環境の `PIM` など未確定の用語は、実装に必要になるまで確定事項として扱わない。
 
 ### 完了条件
 
-- 初期リリース対象ファイルが列挙されている。
-- 未決事項が実装を妨げるか判定されている。
-- 実装を妨げない未決事項は、仮定と確認時期が記録されている。
+- 作業対象と非対象が明確である。
+- `.codex-sample/` に置く移植用部品と、`docs/` に置く保守資料が分離されている。
+- 既存変更との競合有無を確認している。
 
-## 5. 工程1: 既存資産の棚卸し
+## 6. 工程1: 現行資産の棚卸し
 
-### 入力
+### 主な確認対象
 
 - `.codex-sample/AGENTS.md`
+- `.codex-sample/README.md`
+- `.codex-sample/codex_config_template.toml`
 - `.codex-sample/.agents/AGENTS.md`
 - `.codex-sample/.agents/skills/README.md`
 - `.codex-sample/.agents/skills/engineering-support-script/SKILL.md`
 - `.codex-sample/operating_ja/`
+- `.codex-sample/domains_ja/engineering-support.md`
+- `.codex-sample/domains_ja/task_catalog.md`
 - `.codex-sample/templates/`
-- 過去の監査レポート
+- `.codex-sample/project-local/`
+- `scripts/install_codex_sample.*`
+- `scripts/update_codex_sample.*`
+- `scripts/uninstall_codex_sample.*`
 
 ### 作業
 
-1. `.codex-sample` の対象ファイルを一覧化する。
-2. 各ファイルを次の区分に分類する。
-   - 構造のみ再利用
-   - 内容を改変して再利用
-   - Python 向けに新規作成
-   - 対象外
-3. 共通化できるルールと、Python 固有に書き直すルールを分ける。
-4. `engineering-support-script` の内容を、各 Python skill へ分割できる要素に整理する。
-5. `.codex-sample` 固有の業務支援表現が `.codex-python` に流入しないよう確認する。
+1. 各ファイルを「変更不要」「追記して再利用」「Python 向けに新規追加」「対象外」に分類する。
+2. 既存の `engineering-support-script` で扱える範囲を確認する。
+3. Python skill の新設が必要な場合は、既存 skill との発火条件の差を説明できるようにする。
+4. 共通化できる安全性、品質、変更管理のルールは `operating_ja/` に置き、skill に重複記載しない。
+5. `.codex-sample` の既存業務支援機能を削除・弱体化しない。
 
 ### 成果物
 
+必要な場合は、次を作成する。
+
 `docs/agent-template-maintenance/codex-python-existing-assets-inventory.md`
 
-最低限、次の列を持つ表を作る。
-
-| 既存ファイル | 区分 | 再利用先 | 再利用内容 | 注意事項 |
+| 既存ファイル | 判断 | 変更先 | 変更内容 | 注意事項 |
 |---|---|---|---|---|
 
 ### 完了条件
 
-- 初期リリース対象ファイルごとに、再利用元または新規作成の判断がある。
-- `.codex-sample` との統合を前提とする記述がない。
-- 案件固有情報を再利用対象に含めていない。
+- 追加予定の全ファイルについて、新設理由または再利用元が明確である。
+- 既存 skill と重複する Python skill がない。
+- `.codex-python/` の新設を前提とする作業項目がない。
 
-## 6. 工程2: 公式情報・公開資産の調査
-
-### 入力
-
-- 初期 skill 一覧
-- 既存資産棚卸し結果
+## 7. 工程2: 公式情報・公開資産の調査
 
 ### 調査対象
 
@@ -141,203 +178,126 @@
 - Python Packaging User Guide
 - OpenAI Codex の公式ドキュメント
 - Agent Skills の公式仕様
-- CLI、API、スクレイピング、データ処理、可視化、テスト、依存管理、パッケージ化に関する公式情報
+- 実装対象となる CLI、API、スクレイピング、データ処理、可視化、テスト、依存管理、パッケージ化の公式情報
 - 公開されている関連 skill、テンプレート、ガイド
 
 ### 作業
 
-1. Context7 MCP で対象ライブラリや仕様の最新情報を確認する。
+1. ライブラリや仕様は Context7 MCP で確認する。
 2. Context7 MCP で確認できない対象は、公式 Web ドキュメントまたは公式リポジトリで確認する。
-3. 調査項目ごとに次を記録する。
-   - 確認対象
-   - 確認日
-   - 公式 URL
-   - `.codex-python` に反映する要点
-   - バージョン依存事項
-4. 公開 skill や公開リポジトリについて次を確認する。
-   - ライセンス
-   - 著作権表示
-   - 引用・改変条件
-   - 直接利用するか、考え方のみ参考にするか
-5. 長文転載を避け、運用ルールに必要な内容だけを要約する。
+3. 確認対象、確認日、公式 URL、反映要点、バージョン依存事項を記録する。
+4. 公開資産はライセンス、著作権表示、引用・改変条件を確認する。
+5. 長文転載を避け、雛形へは運用に必要な要点だけを反映する。
 
 ### 成果物
 
 - `docs/agent-template-maintenance/codex-python-official-docs-research.md`
 - `docs/agent-template-maintenance/codex-python-public-assets-research.md`
 
-### 完了条件
+必要な調査を実施した場合だけ作成する。調査記録を `.codex-sample/` に置かない。
 
-- 初期 skill の主要技術領域について一次情報を確認している。
-- 採用候補を固定標準として扱うべきでない箇所が明記されている。
-- 公開資産のライセンス確認結果が記録されている。
-- `.codex-python` に転載すべきでない調査情報が分離されている。
-
-## 7. 工程3: 情報設計
-
-### 入力
-
-- 初期スコープ決定メモ
-- 既存資産棚卸し
-- 公式情報・公開資産の調査結果
+## 8. 工程3: 情報設計
 
 ### 作業
 
-1. ディレクトリごとの責務を確定する。
-2. ルート `AGENTS.md` と各補助文書の指示優先順位を定義する。
-3. 各初期 skill の対象範囲と対象外を定義する。
-4. skill が重複して発火しそうな組み合わせを整理する。
-5. 人間向け文書とエージェント向け文書の言語を確定する。
-6. `.codex-python` の移植対象と非移植対象を明記する。
-7. 各ファイルが参照する文書を定義し、循環参照や参照切れを防ぐ。
+1. Python 固有の常時指示、共通運用ルール、domain 説明、skill、テンプレートを分ける。
+2. ルート `AGENTS.md` には全 Python 作業で常時必要な最小限の指示だけを追加する。
+3. 複数 skill に共通する手順は `operating_ja/` へ置く。
+4. 人間向けのタスク説明は `domains_ja/engineering-support.md` または必要な新規 domain 文書へ置く。
+5. タスク固有の実行手順だけを `.agents/skills/python-{task-name}/SKILL.md` に置く。
+6. 再利用する記入形式だけを `templates/` に置く。
+7. `project-local/` へのファイル追加は、移植直後に空で使う必要がある場合に限定する。
 
-### skill 境界の確認例
+### 初期 skill 候補
 
-| 主タスク | 主に使う skill | 補助的に使う skill |
+| Skill | 主対象 | 既存 skill との境界 |
 |---|---|---|
-| CSV を変換する CLI | `python-data-processing` | `python-cli-tool`、`python-testing` |
-| API データ取得 CLI | `python-api-integration` | `python-cli-tool`、`python-dependency-management` |
-| Web ページ収集 | `python-web-scraping` | `python-data-processing`、`python-testing` |
-| グラフ作成ツール | `python-data-visualization` | `python-data-processing`、`python-cli-tool` |
-| 配布可能な CLI | `python-packaging` | `python-cli-tool`、`python-dependency-management` |
+| `python-project-intake` | Python ツールの要件・制約整理 | 一般案件の intake ではなく開発要件を扱う |
+| `python-cli-tool` | CLI 設計・実装 | 単発スクリプト全般ではなく CLI 契約を扱う |
+| `python-data-processing` | CSV、Excel、JSON 等の安全な処理 | 一般スクリプトよりデータ保全を重視する |
+| `python-api-integration` | 外部 API 連携 | 調査 skill ではなく実装と運用を扱う |
+| `python-web-scraping` | Web 収集実装 | 公開情報調査ではなく収集コードを扱う |
+| `python-data-visualization` | 再現可能な図表生成 | 図解制作ではなくデータ可視化コードを扱う |
+| `python-dependency-management` | 仮想環境、依存、lock | 個別ライブラリ実装ではなく依存方針を扱う |
+| `python-packaging` | パッケージ・配布 | 単発実行ではなく配布可能性を扱う |
+| `python-testing` | テスト設計・実装 | 一般品質確認ではなくコードテストを扱う |
+| `python-code-review` | Python コードレビュー | 文書レビューではなくコードの欠陥を扱う |
+
+初期要件の10件を候補とするが、棚卸し結果により統合・延期してよい。件数を満たすためだけに skill を分割しない。
 
 ### 成果物
 
-- `docs/agent-template-maintenance/codex-python-information-architecture.md`
-- 同文書内のファイル責務表、参照関係表、skill 境界表
+必要な場合は、`docs/agent-template-maintenance/codex-python-information-architecture.md` にファイル責務表と skill 境界表を作成する。
 
-### 完了条件
+## 9. 工程4: 共通基盤の更新
 
-- 初期リリース対象の全ファイルに責務が割り当てられている。
-- 同じルールを複数箇所へ重複記載する必要がない構造になっている。
-- skill の主対象、対象外、補助関係が説明できる。
-- 実装順序が確定している。
+### 対象
 
-## 8. 工程4: 基盤ファイル実装
-
-### 実装順序
-
-1. `.codex-python/README.md`
-2. `.codex-python/AGENTS.md`
-3. `.codex-python/config.toml`
-4. `.codex-python/.agents/AGENTS.md`
-5. `.codex-python/.agents/README.md`
-6. `.codex-python/.agents/skills/README.md`
+- `.codex-sample/AGENTS.md`
+- `.codex-sample/README.md`
+- `.codex-sample/codex_config_template.toml`
+- `.codex-sample/.agents/AGENTS.md`
+- `.codex-sample/.agents/README.md`
+- `.codex-sample/.agents/skills/README.md`
 
 ### 作業
 
-1. 必要なディレクトリを作成する。
-2. `README.md` に目的、構成、移植手順、コピー対象、非移植対象を書く。
-3. `AGENTS.md` に常時適用する Python 開発ルールを書く。
-4. `config.toml` は最小雛形とし、環境依存の値を固定しない。
-5. `.agents/AGENTS.md` に skill の設計、追加、更新、監査ルールを書く。
-6. `.agents/skills/README.md` に skill の探索方法と追加方法を書く。
+1. `AGENTS.md` には、既存コード優先、Python 3.11 以上、データ保全、テスト、公式情報確認など、常時必要なルールだけを追加する。
+2. `.agents/AGENTS.md` と skill README に、Python skill の命名・追加・監査方法を既存規則と整合させて追記する。
+3. `.codex-sample/README.md` の構成図、task catalog、移植説明を更新する。
+4. Codex 設定を変更する場合は `codex_config_template.toml` を編集する。`.codex-sample/.codex/config.toml` や `.codex-sample/config.toml` は作成しない。
+5. `codex_config_template.toml` へ Python 固有 MCP を追加する場合は、利用頻度とトークン負荷を検討し、原則としてコメントアウトした候補にする。
+6. このテンプレート管理プロジェクト自身の `.codex/config.toml` は実行環境用であり、再配布雛形として編集しない。
 
-### `AGENTS.md` に含める主要事項
+### 設定更新時の注意
 
-- 日本語出力の原則と例外
-- 既存コード・設定の優先
-- Python 3.11 以上
-- プロジェクトごとのツール選定
-- 最新公式ドキュメントの確認
-- 非破壊的なファイル操作
-- 保守性、コメント、テスト、検証
-- secrets と個人情報の禁止
-- `.agents/skills/` の利用方法
-- `operating_ja/` の参照方法
+- 移植先に既存 `.codex/config.toml` がある場合、更新スクリプトは上書きしない。
+- `--force` または `-Force` を指定しても、既存 `.codex/config.toml` は保持する。
+- 雛形側の設定変更を既存移植先へ反映する必要がある場合は、差分を提示して利用者が採否を判断する。
+- `$HOME/.codex/config.toml` は標準コピー対象外であり、プロジェクトの `trust_level` だけを管理する。
 
-### 完了条件
+## 10. 工程5: 共通運用ルールと domain の更新
 
-- 6 ファイルが作成されている。
-- ルート文書から主要運用ルールと skill 管理文書へ到達できる。
-- 実案件情報や環境固有の絶対パスが含まれていない。
-- `config.toml` が特定環境の設定を強制していない。
+### 運用ルール
 
-## 9. 工程5: 共通運用ルール実装
+既存文書への追記を優先し、責務が明確に分かれる場合だけ新規作成する。候補は次のとおり。
 
-### 実装対象
+- 開発ワークフロー
+- 依存追加・更新方針
+- テスト方針
+- secrets とセキュリティ
+- 入出力データの保全
+- ファイル I/O
+- 開発文書と runbook
 
-- `operating_ja/README.md`
-- `workflow.md`
-- `quality_check.md`
-- `dependency_policy.md`
-- `testing_policy.md`
-- `security_policy.md`
-- `data_safety.md`
-- `file_io_policy.md`
-- `documentation_policy.md`
-- `agents_update_policy.md`
+### domain
 
-### 作業
-
-1. 各文書の責務を情報設計書と照合する。
-2. 共通ルールは `operating_ja/` に一度だけ記載する。
-3. skill 側には、該当する共通ルールへの短い参照を書く。
-4. 特定ツールの採用を強制せず、選定条件を書く。
-5. コメント方針は「量」ではなく「意図、制約、非自明な判断を残す」ことを基準にする。
+1. まず `.codex-sample/domains_ja/engineering-support.md` を更新する。
+2. タスク数が多く読みにくくなる場合だけ、Python 開発専用の domain 文書を追加する。
+3. `.codex-sample/domains_ja/task_catalog.md` に追加した skill を掲載する。
+4. 正式な skill は `.agents/skills/*/SKILL.md` であり、task catalog は人間向け一覧であることを維持する。
 
 ### 完了条件
 
-- すべての対象文書が作成されている。
-- ルール間に矛盾がない。
-- `pyproject.toml`、pytest、ruff、mypy、uv などを無条件に必須としていない。
-- データ保全、認証情報、依存追加、テスト、文書化の最低基準がある。
-
-## 10. 工程6: domain 説明実装
-
-### 実装対象
-
-- `domains_ja/README.md`
-- `task_catalog.md`
-- `cli-tools.md`
-- `data-processing.md`
-- `api-integration.md`
-- `web-scraping.md`
-- `data-visualization.md`
-- `package-development.md`
-- `operations-maintenance.md`
-
-### 作業
-
-1. 各 domain の目的、代表タスク、利用する skill、注意事項を書く。
-2. `task_catalog.md` に人間向けのタスク一覧を作る。
-3. 正式な skill 登録簿は `.agents/skills/*/SKILL.md` であり、`task_catalog.md` は説明用であることを明記する。
-4. domain と skill の名称・参照先を一致させる。
-
-### 完了条件
-
-- 初期 skill が少なくとも1つの domain から参照されている。
+- 同じルールが AGENTS、運用文書、複数 skill に重複していない。
+- 既存の業務支援ルールと矛盾しない。
 - 存在しない skill への参照がない。
-- domain 文書に実装手順を重複記載していない。
 
-## 11. 工程7: skill 実装
-
-### 実装順序
-
-1. `python-project-intake`
-2. `python-cli-tool`
-3. `python-data-processing`
-4. `python-api-integration`
-5. `python-web-scraping`
-6. `python-data-visualization`
-7. `python-dependency-management`
-8. `python-packaging`
-9. `python-testing`
-10. `python-code-review`
+## 11. 工程6: Python skill の実装
 
 ### 標準構成
 
 ```markdown
 ---
 name: python-example
-description: "Use when ..."
+description: "Use when ... Japanese triggers: ..."
 ---
 
 # Python Example
 
 ## Purpose
 
-## When to Use
+## Inputs
 
 ## Workflow
 
@@ -345,25 +305,29 @@ description: "Use when ..."
 
 ## Quality Checks
 
+## Common Operating Rules
+
 ## Portability
 ```
 
+必要な節だけを使い、内容のない節は作らない。
+
 ### 作業
 
-1. `description` に英語の用途説明と必要な日本語トリガーを含める。
-2. `When to Use` で対象タスクを明確にする。
-3. 必要な場合は `When Not to Use` で隣接 skill との境界を示す。
-4. `Workflow` は簡潔な実行手順にする。
-5. `Quality Checks` に、その skill 固有の確認事項だけを書く。
-6. 共通ルールは `operating_ja/` を参照し、重複を避ける。
-7. `Portability` に案件固有情報を保存しないことを書く。
+1. `.codex-sample/.agents/skills/python-{task-name}/SKILL.md` を作成する。
+2. `description` に英語の用途説明と必要な日本語トリガーを含める。
+3. 隣接 skill と発火条件が重なる場合は、本文で主対象と対象外を明確にする。
+4. `Workflow` は実行手順に絞り、一般的な品質ルールを重複記載しない。
+5. 共通ルールは `AGENTS.md` と `operating_ja/` を参照する。
+6. 案件固有情報や作業メモを skill ディレクトリに保存しない。
+7. 外部ライブラリに依存する補助スクリプトを追加する場合は、導入方法とライセンスを確認する。
 
-### skill 固有の必須観点
+### 必須観点
 
 | Skill | 必須観点 |
 |---|---|
 | `python-project-intake` | 目的、利用者、入力、出力、実行環境、制約、完了条件 |
-| `python-cli-tool` | help、終了コード、stdout/stderr、dry-run、パス、エンコーディング |
+| `python-cli-tool` | help、終了コード、stdout/stderr、dry-run、パス、文字コード |
 | `python-data-processing` | 入力保全、欠損、重複、型、日付、単位、出力検証 |
 | `python-api-integration` | 認証、timeout、retry、rate limit、エラー応答、秘密情報 |
 | `python-web-scraping` | 利用規約、robots.txt、負荷、著作権、構造変化 |
@@ -373,152 +337,162 @@ description: "Use when ..."
 | `python-testing` | リスク、代表ケース、異常系、境界値、再現方法 |
 | `python-code-review` | バグ、保守性、セキュリティ、データ破壊、テスト不足 |
 
-### 完了条件
+## 12. 工程7: テンプレートと `project-local` の更新
 
-- 10 個の `SKILL.md` が作成されている。
-- frontmatter が正しく、ディレクトリ名と `name` が一致している。
-- 各 skill の発火条件が区別できる。
-- 本文が英語で、簡潔な運用手順になっている。
+### テンプレート候補
 
-## 12. 工程8: テンプレートと `project-local` 実装
-
-### テンプレート
-
-- `templates/project_intake_template.md`
 - `templates/tool_spec_template.md`
 - `templates/cli_usage_template.md`
 - `templates/test_plan_template.md`
 - `templates/dependency_decision_template.md`
-
-### `project-local`
-
-- `project-local/README.md`
-- `project-context.md`
-- `dependency-notes.md`
-- `data-inventory.md`
-- `runbook.md`
-- `work-log.md`
+- `templates/troubleshooting_note_template.md`
 
 ### 作業
 
-1. テンプレートは記入欄と確認項目を中心にする。
-2. 特定案件のサンプル値を入れない。
-3. `project-local/README.md` に、記入後は非移植領域になることを書く。
-4. `data-inventory.md` に、入力元、形式、文字コード、機密性、更新頻度、出力先を記録できる欄を設ける。
-5. `runbook.md` に、前提、実行方法、確認方法、復旧方法を記録できる欄を設ける。
+1. 既存テンプレートで代替できないことを確認してから追加する。
+2. 記入欄と確認項目を中心とし、特定案件のサンプル値を入れない。
+3. Python 固有の project context が必要でも、まず既存 `project_context_template.md` の拡張を検討する。
+4. `project-local/` への新規ファイル追加は、全移植先で新規導入直後から必要な空雛形に限る。
+5. 記入済み `project-local/` は再配布対象外であることを維持する。
 
-### 完了条件
+## 13. 工程8: 品質監査
 
-- 対象テンプレートがすべて作成されている。
-- 実案件情報が含まれていない。
-- 各テンプレートの用途と保存先が説明されている。
-
-## 13. 工程9: 品質監査
-
-### 監査項目
-
-1. ファイル構成
-2. frontmatter
-3. 文字コード
-4. skill 名の整合
-5. 参照先の存在
-6. 言語方針
-7. 移植性
-8. 機密情報
-9. 重複・矛盾
-10. skill の発火境界
-
-### 確認方法
+### 基本確認
 
 ```bash
-find .codex-python -type f | sort
-rg -n "^name:|^description:" .codex-python/.agents/skills
-rg -n "/home/|C:\\\\|api[_-]?key|secret|token|password" .codex-python
+git status --short
+find .codex-sample -type f | sort
+rg -n "^name:|^description:" .codex-sample/.agents/skills
+rg -n "\\.codex-python|\\.codex-sample/config\\.toml|\\.codex-sample/\\.codex/config\\.toml" \
+  .codex-sample docs/agent-template-maintenance/codex-python-development-procedure.md
+rg -n "/home/|C:\\\\|api[_-]?key|secret|password" .codex-sample
 ```
 
-必要に応じて、次も確認する。
+`.codex-python` は、旧計画の参考資料に残る記述と、本手順書で旧前提を説明する記述だけを許容する。
 
-- 全 `SKILL.md` の先頭3バイトに UTF-8 BOM がないこと。
-- YAML frontmatter がパース可能であること。
-- `domains_ja/task_catalog.md` の skill 名が実在すること。
-- README や AGENTS の参照先が実在すること。
-- `.codex-python` にログ、キャッシュ、DB、一時ファイルがないこと。
+### frontmatter と文字コード
+
+全 `SKILL.md` について次を確認する。
+
+- YAML frontmatter が `name` と `description` を持つ。
+- `description` がダブルクォートで囲まれている。
+- `name` と親ディレクトリ名が一致する。
+- 未クォートのコロンがない。
+- UTF-8 BOM がない。
+
+### 参照・一覧
+
+- `.agents/AGENTS.md` の一覧と実在 skill が一致する。
+- `domains_ja/task_catalog.md` の skill 名が実在する。
+- README、AGENTS、domain、skill からの参照先が存在する。
+- 廃止済みのファイル名 `config.toml` を移植元として参照していない。
+
+### 移植性・安全性
+
+- 実案件情報、認証情報、絶対パス、ログ、キャッシュ、DB、一時ファイルがない。
+- `old/`、`_old/` など参照禁止ディレクトリを情報源として扱う指示がない。
+- Python の入力データを上書きする手順が既定になっていない。
+- 外部ライブラリを無条件に固定していない。
 
 ### 代表シナリオ
 
-少なくとも次の依頼を用意し、主に発火すべき skill を確認する。
+少なくとも次の依頼で主に発火すべき skill を確認する。
 
-1. CSV を読み込み、列を加工して別ファイルへ出力する CLI を作る。
-2. Web API からデータを取得し、JSON を保存する CLI を作る。
+1. CSV を加工して別ファイルへ出力する CLI を作る。
+2. Web API からデータを取得し、JSON を保存する。
 3. Web ページから表を収集し、アクセス間隔を設定する。
 4. Excel データを集計し、グラフ画像を出力する。
 5. 既存 CLI をパッケージ化し、導入手順とテストを追加する。
+6. 小規模な単発 Python スクリプトを作る。
+
+6 は既存 `engineering-support-script` と Python 専用 skill のどちらを使うか確認する境界テストとする。
 
 ### 成果物
 
 `docs/agent-template-maintenance/codex-python-quality-audit-YYYYMMDD.md`
 
-### 完了条件
+監査レポートは `.codex-sample/` に置かない。
 
-- 重大または中程度の問題が残っていない。
-- 軽微な未対応事項は、理由と後続対応を記録している。
-- UTF-8 BOM、frontmatter、参照切れ、案件固有情報の検査が完了している。
+## 14. 工程9: 移植スクリプト確認
 
-## 14. 工程10: 移植確認
+### 現行マッピング
 
-### 作業
+| 移植元 | 移植先 |
+|---|---|
+| `.codex-sample/AGENTS.md` | `<project-root>/AGENTS.md` |
+| `.codex-sample/.agents/` | `<project-root>/.agents/` |
+| `.codex-sample/codex_config_template.toml` | `<project-root>/.codex/config.toml` |
+| `.codex-sample/domains_ja/` | `<project-root>/domains_ja/` |
+| `.codex-sample/operating_ja/` | `<project-root>/operating_ja/` |
+| `.codex-sample/templates/` | `<project-root>/templates/` |
+| `.codex-sample/project-local/` | `<project-root>/project-local/` |
 
-1. `.codex-python` を仮の空プロジェクトへ移植する想定でコピー対象を確認する。
-2. 移植後の配置を確認する。
-   - `.codex-python/AGENTS.md` → プロジェクトルートの `AGENTS.md`
-   - `.codex-python/.agents/` → プロジェクトルートの `.agents/`
-   - `.codex-python/config.toml` → 必要に応じて `.codex/config.toml`
-   - その他の共通ディレクトリ → プロジェクトルート
-3. 既存 `AGENTS.md`、`.agents/`、README がある場合のマージ手順を確認する。
-4. `project-local/` が新規導入時に空であることを確認する。
-5. 導入後に最初に実施する project intake の手順を確認する。
+### Linux / macOS
 
-### 完了条件
+```bash
+scripts/install_codex_sample.sh <project-root>
+scripts/update_codex_sample.sh <project-root>
+scripts/update_codex_sample.sh --force <project-root>
+scripts/uninstall_codex_sample.sh <project-root>
+```
 
-- `README.md` だけで移植対象と配置先を判断できる。
-- 既存ファイルを無条件に上書きする手順になっていない。
-- 移植後に skill を探索できる。
-- `.codex-python` 固有の保守資料を移植対象に含めていない。
+### Windows PowerShell
+
+```powershell
+scripts/install_codex_sample.ps1 <project-root>
+scripts/update_codex_sample.ps1 <project-root>
+scripts/update_codex_sample.ps1 <project-root> -Force
+scripts/uninstall_codex_sample.ps1 <project-root>
+```
+
+### 確認事項
+
+1. install は既存ファイル・ディレクトリを上書きしない。
+2. update は `AGENTS.md`、`.agents/`、`domains_ja/`、`operating_ja/`、`templates/` を雛形へ同期する。
+3. update は雛形側で廃止された管理対象ファイルを移植先から削除する。
+4. 既存 `.codex/config.toml` と既存 `project-local/` は update でも保持する。
+5. `--force` / `-Force` は README を強制更新するが、`.codex/config.toml` と `project-local/` は保持する。
+6. 既存 README が別内容の場合、通常更新では `codex_setup_README.md` を使う。
+7. uninstall は変更済み `AGENTS.md`、`.codex/config.toml`、README、`project-local/` を誤削除しない。
+
+スクリプト自体を変更した場合は、一時ディレクトリで install、update、force update、uninstall を実行し、保持対象と同期対象を確認する。
 
 ## 15. 変更管理
 
-初期リリース後にファイルを追加・変更する場合は、次の順で行う。
+Python 対応の追加・変更は、次の順で行う。
 
 1. 変更理由と対象タスクを確認する。
-2. 既存 skill や運用ルールへの追加で対応できないか確認する。
-3. 新規 skill が必要な場合は、既存 skill との発火境界を定義する。
-4. `AGENTS.md` に常時指示を追加する必要性を慎重に判断する。
-5. domain、task catalog、README の参照を更新する。
-6. frontmatter、BOM、参照切れ、移植性を再監査する。
-7. 変更内容を本環境用の監査レポートへ記録する。
+2. 既存 skill、運用ルール、domain、テンプレートへの追記で対応できないか確認する。
+3. 管理対象の改善要望であれば、`change-requests/` に起票または既存リクエストを更新する。
+4. 採用または一部採用と判断した内容だけを `.codex-sample/` へ反映する。
+5. 新規 skill は既存 skill との発火境界を定義する。
+6. `AGENTS.md` への常時指示追加は、毎回必要なルールに限定する。
+7. domain、task catalog、README、skill 一覧の参照を更新する。
+8. frontmatter、BOM、参照切れ、移植性、スクリプト挙動を検証する。
+9. リクエスト本文の対応記録と `request-index.md` を更新する。
 
-## 16. 実行開始時のチェックリスト
+## 16. 作業開始チェックリスト
 
-- [ ] ルート `AGENTS.md` を確認した。
-- [ ] 初期スコープ決定メモを確認した。
-- [ ] 作業対象が雛形か保守資料かを判定した。
-- [ ] 作業成果物の保存先を決めた。
-- [ ] 既存ファイルと未コミット変更を確認した。
+- [ ] ルート `AGENTS.md` と本手順書を確認した。
+- [ ] `git status` と直近の `git log` を確認した。
+- [ ] `.codex-python/` を新設しないことを確認した。
+- [ ] 作業対象が移植用雛形か保守資料かを判定した。
+- [ ] 既存 skill と共通運用ルールを棚卸しした。
+- [ ] 改善リクエストとの関係を確認した。
 - [ ] 外部仕様を扱う場合の調査方法を決めた。
 - [ ] 実案件情報を使用しないことを確認した。
 
-## 17. 初期リリース完了チェックリスト
+## 17. 完了チェックリスト
 
-- [ ] 基盤ファイルが揃っている。
-- [ ] 共通運用ルールが揃っている。
-- [ ] domain 説明が揃っている。
-- [ ] 初期 skill 10件が揃っている。
-- [ ] テンプレートと `project-local` の空雛形が揃っている。
-- [ ] 全 `SKILL.md` の frontmatter を検査した。
-- [ ] UTF-8 BOM がないことを確認した。
-- [ ] skill 名とディレクトリ名の整合を確認した。
-- [ ] 参照切れがないことを確認した。
-- [ ] 案件固有情報や認証情報がないことを確認した。
-- [ ] 代表シナリオで skill の発火境界を確認した。
-- [ ] 品質監査レポートを作成した。
-- [ ] 移植手順を確認した。
+- [ ] Python 対応が `.codex-sample/` 内の適切な責務へ配置されている。
+- [ ] `codex_config_template.toml` と移植先 `.codex/config.toml` の関係が正しい。
+- [ ] 既存 `.codex/config.toml` と `project-local/` の保持方針を壊していない。
+- [ ] 既存の業務支援機能を削除・弱体化していない。
+- [ ] Python skill と既存 skill の発火境界を確認した。
+- [ ] `SKILL.md` の frontmatter と UTF-8 BOM を検査した。
+- [ ] skill 名、一覧、task catalog、参照先の整合を確認した。
+- [ ] 案件固有情報、認証情報、絶対パスがないことを確認した。
+- [ ] 代表シナリオで skill の選択を確認した。
+- [ ] 必要な品質監査レポートを `docs/` に作成した。
+- [ ] 移植スクリプトへの影響を確認した。
+- [ ] 改善リクエストの対応記録と索引を必要に応じて更新した。

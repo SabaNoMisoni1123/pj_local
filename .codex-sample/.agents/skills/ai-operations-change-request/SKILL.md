@@ -1,6 +1,6 @@
 ---
 name: ai-operations-change-request
-description: "Use when creating, triaging, or applying Markdown change requests for Codex settings, AGENTS.md, .codex-sample, skills, operating rules, templates, or agent workflow improvements. Japanese triggers: Codex改善要望, 設定更新リクエスト, 変更要求, 機能追加要望."
+description: "Use when the primary deliverable is a tracked Markdown change request or its status and implementation record for Codex configuration or agent-template maintenance. Do not use for directly drafting AGENTS.md, prompts, or skills without change-request management. Japanese triggers: Codex改善要望, 設定更新リクエスト, 変更要求票, 機能追加要望."
 ---
 
 # AI Operations Change Request
@@ -64,4 +64,3 @@ Follow the active project `AGENTS.md` and the common rules under `operating_ja/`
 
 This skill must remain project-agnostic.
 Do not store project-specific facts or working notes inside this skill directory.
-

@@ -1,6 +1,6 @@
 ---
 name: document-review-quality-check
-description: "Use when running a general quality check on reports, outputs, TODO ledgers, minutes, email drafts, prompts, or generated documents for evidence, consistency, completeness, and residual risks. Japanese triggers: 品質チェック, 根拠確認, 残存リスク."
+description: "Use when the primary deliverable is a broad final quality gate covering completeness, evidence, usability, and residual risks across an output. Do not use when the request specifically targets only consistency or logic structure. Japanese triggers: 最終品質チェック, 成果物品質確認, 残存リスク確認."
 ---
 
 # Document Review Quality Check

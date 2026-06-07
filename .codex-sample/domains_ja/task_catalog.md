@@ -33,4 +33,14 @@ skill の正式な発見単位は `../.agents/skills/*/SKILL.md` であり、こ
 | AI運用 | Codex改善リクエスト | `ai-operations-change-request` | 改善要望、業務利用時の課題、既存設定 | 改善リクエスト、反映管理メモ |
 | AI運用 | skill設計 | `ai-operations-skill-design` | 業務要件、既存skill | skill設計案 |
 | 開発・ツール支援 | 簡易スクリプト作成 | `engineering-support-script` | 入力データ、既存コード、処理要件 | スクリプト、変換結果、検証メモ |
+| 開発・ツール支援 | Pythonツール要件整理 | `python-project-intake` | 目的、利用者、入出力、実行環境、制約 | ツール仕様、確認事項、完了条件 |
+| 開発・ツール支援 | Python CLI開発 | `python-cli-tool` | コマンド要件、既存コード | CLI、help、終了コード、利用手順 |
+| 開発・ツール支援 | Pythonデータ処理 | `python-data-processing` | CSV、Excel、JSON、データ定義 | 非破壊の変換処理、出力、検証結果 |
+| 開発・ツール支援 | 外部API連携 | `python-api-integration` | API仕様、認証方式、入出力要件 | APIクライアント、エラー処理、運用手順 |
+| 開発・ツール支援 | Webスクレイピング | `python-web-scraping` | 対象URL、利用条件、取得項目 | 収集コード、保存データ、負荷・規約確認 |
+| 開発・ツール支援 | データ可視化 | `python-data-visualization` | データ、指標定義、表示要件 | 再現可能な図表、生成コード |
+| 開発・ツール支援 | Python依存管理 | `python-dependency-management` | 既存構成、導入候補、互換性要件 | 依存判断、設定差分、再現手順 |
+| 開発・ツール支援 | Pythonパッケージ化 | `python-packaging` | 既存ツール、配布対象、導入要件 | パッケージ設定、entry point、導入・削除手順 |
+| 開発・ツール支援 | Pythonテスト | `python-testing` | 実装、仕様、リスク | テスト計画、テストコード、実行結果 |
+| 開発・ツール支援 | Pythonコードレビュー | `python-code-review` | Pythonコード、差分、テスト | 重要度順の指摘、残存リスク |
 | ビジュアル制作 | 図解作成 | `visual-production-diagram` | 論点、構成案、根拠資料 | 図解案、Mermaid図、画像生成プロンプト |

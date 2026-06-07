@@ -1,6 +1,6 @@
 ---
 name: project-management-risk-issue
-description: "Use when identifying, organizing, assessing, or updating project risks, issues, blockers, dependencies, mitigation actions, or escalation points. Japanese triggers: リスク整理, 課題管理, エスカレーション."
+description: "Use when the primary deliverable is a risk and issue register with impact, response, owner, or escalation status. Do not use for a general TODO list or workplan. Japanese triggers: リスク課題台帳, 課題管理表, エスカレーション一覧."
 ---
 
 # Project Management Risk and Issue

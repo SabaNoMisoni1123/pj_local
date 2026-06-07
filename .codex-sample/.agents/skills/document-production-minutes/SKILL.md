@@ -1,6 +1,6 @@
 ---
 name: document-production-minutes
-description: "Use when turning meeting notes, transcripts, recording exports, rough memos, or discussion logs into minutes or action summaries. Japanese triggers: 議事録, 会議メモ, 文字起こし整理."
+description: "Use when the primary deliverable is a complete meeting record or minutes covering discussion, decisions, and actions. Do not use when the requested output is only a TODO, decision, risk, or follow-up ledger. Japanese triggers: 議事録作成, 会議記録, 文字起こしから議事録."
 ---
 
 # Document Production Minutes

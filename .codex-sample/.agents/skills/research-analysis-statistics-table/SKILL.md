@@ -1,6 +1,6 @@
 ---
 name: research-analysis-statistics-table
-description: "Use when summarizing, comparing, validating, or creating tables from statistics, numeric datasets, Excel, CSV, public data tables, indicators, survey results, market data, time series, or quantitative evidence. Japanese triggers: 統計表, 数値データ, CSV集計."
+description: "Use when the primary deliverable is a human-readable statistical summary or comparison table with definitions, units, periods, and sources. Do not use when the requested deliverable is Python transformation code. Japanese triggers: 統計表作成, 数値比較表, 指標サマリー."
 ---
 
 # Research Analysis Statistics Table

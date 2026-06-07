@@ -16,6 +16,8 @@ Agents should discover skills by scanning:
 
 The skill `name` and `description` in the YAML front matter are the primary metadata for routing.
 
+Choose exactly one primary skill from the main requested deliverable. A skill must not activate only because it covers an input type, intermediate step, quality concern, or supporting technique. Add another skill only for an explicitly requested separate deliverable or an explicit handoff after the primary result is complete. When a generic and a technology-specific skill match the same deliverable, use the technology-specific skill.
+
 Human-facing files such as `README.md`, `domains_ja/task_catalog.md`, and domain pages may contain examples or summaries, but they are not the authoritative skill registry.
 
 ## Adding a Skill
@@ -95,6 +97,8 @@ Use a flat directory name:
 ```
 
 The directory name should match the front matter `name`.
+
+Python development skills use `python-{task-name}`. For Python implementation or modification, select the one Python skill matching the primary behavior. Testing, dependency checks, packaging considerations, and code review are normal implementation concerns and do not trigger their dedicated skills unless the user requests those as separate deliverables. Use `engineering-support-script` only when no Python-specific skill matches the requested behavior.
 
 ## Minimal SKILL.md
 

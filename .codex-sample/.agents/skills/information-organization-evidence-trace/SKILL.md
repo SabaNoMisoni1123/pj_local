@@ -1,6 +1,6 @@
 ---
 name: information-organization-evidence-trace
-description: "Use when organizing evidence, separating facts from assumptions, citing source locations, creating source maps, classifying unknowns, or checking claim support. Japanese triggers: 根拠整理, 事実確認, source map."
+description: "Use when the primary deliverable is an evidence map or claim-to-source trace that classifies facts, inferences, unknowns, and confirmation needs. Do not use merely because another task requires citations or ordinary fact checking. Japanese triggers: 根拠対応表, evidence trace, source map作成."
 ---
 
 # Information Organization Evidence Trace

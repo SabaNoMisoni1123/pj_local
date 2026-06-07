@@ -1,6 +1,6 @@
 ---
 name: project-management-decision-log
-description: "Use when extracting, organizing, reviewing, or maintaining project decisions, decision history, pending decisions, approval status, or decision rationale. Japanese triggers: 意思決定ログ, 決定事項, 承認状況."
+description: "Use when the primary deliverable is a decision ledger covering decisions, pending decisions, approvals, and rationale. Do not use for complete minutes, TODO ledgers, or general meeting follow-up. Japanese triggers: 意思決定ログ, 決定事項台帳, 承認状況一覧."
 ---
 
 # Project Management Decision Log

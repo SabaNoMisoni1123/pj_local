@@ -1,13 +1,13 @@
 ---
 name: engineering-support-script
-description: "Use when creating, reviewing, fixing, or explaining small scripts, data transformations, automation helpers, API examples, tests, validation checks, or project tools. Japanese triggers: スクリプト作成, 自動化, データ変換."
+description: "Use only for a small one-off script or automation helper when no language-specific or task-specific skill matches. Do not use for Python CLI, structured-data processing, API integration, web scraping, visualization, dependency management, packaging, dedicated testing, or code review. Japanese triggers: 汎用スクリプト作成, 小規模自動化."
 ---
 
 # Engineering Support Script
 
 ## Purpose
 
-Support business work with small, understandable, reproducible, and non-destructive scripts or technical procedures.
+Support business work with a small, understandable, reproducible, and non-destructive script when no specialized skill applies.
 
 ## Workflow
 

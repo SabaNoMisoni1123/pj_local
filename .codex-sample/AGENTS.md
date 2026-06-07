@@ -14,10 +14,12 @@ Agent-executable task definitions are maintained in English under `.agents/skill
 Reusable output formats are maintained under `templates/`.
 Codex-specific configuration, if needed, is maintained under `.codex/`.
 
-For business-support work, use the relevant skill in `.agents/skills/` when available.
+For business-support and Python development work, use the relevant skill in `.agents/skills/` when available.
 Discover skills by scanning immediate subdirectories that contain `.agents/skills/*/SKILL.md`; do not rely on `README.md`, `domains_ja/task_catalog.md`, or domain pages as the authoritative skill registry.
 Use each skill's YAML front matter `name` and `description` as the primary routing metadata.
 If no suitable skill exists, follow the closest domain guidance in `domains_ja/README.md` and explain the gap.
+
+Select one primary skill from the user's main requested deliverable. Do not activate additional skills merely because they describe supporting steps, quality checks, input formats, or implementation details. Use another skill only when the user explicitly requests a separate deliverable covered by it or when the primary skill directs a handoff after its own deliverable is complete. Prefer a technology-specific skill over a generic skill when both match the same deliverable.
 
 ## Operating Rules
 
@@ -35,10 +37,13 @@ Use these files as the standard references:
 - `operating_ja/agents_update_policy.md` for AGENTS.md update proposals.
 - `.agents/AGENTS.md` for the design, maintenance policy, and audit procedure of the `.agents` directory.
 - `.agents/skills/README.md` for skill discovery and skill addition rules.
+- `operating_ja/python_development.md` for Python 3.11+, dependency, testing, security, data preservation, and delivery rules.
 
 When a relevant `SKILL.md` exists, follow both the skill and the common operating rules. If they conflict, follow the active project `AGENTS.md` first, then this file, then the common operating rules, then the skill.
 
 For derivative business outputs, create a new file by default. Edit, delete, rename, move, or overwrite existing files only when the user explicitly requests it and the active project rules allow it.
+
+For Python work, inspect the existing project structure and toolchain before choosing dependencies or configuration. Target Python 3.11 or later unless the active project states otherwise. Preserve input data, keep credentials out of code and logs, add tests in proportion to risk, and report commands run and checks not run. Do not impose `pyproject.toml`, pytest, ruff, mypy, pyright, uv, Poetry, or another tool when the project already uses a different viable approach. When a request is to implement or modify Python code, select the single Python skill matching the primary behavior; treat testing, dependency, packaging, and review considerations as part of that skill unless the user requests those as separate deliverables.
 
 Do not treat low-confidence sources as sole evidence. If such sources are used, label them as low-confidence and prefer primary sources for confirmation.
 

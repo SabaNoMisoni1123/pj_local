@@ -1,6 +1,6 @@
 # 生成AIエージェント業務支援テンプレート
 
-この `.codex-sample` は、Codex や Agent Skills 互換エージェント向けの移植可能な雛形です。
+この `.codex-sample` は、業務遂行支援と Python ツール開発に使う、Codex や Agent Skills 互換エージェント向けの移植可能な雛形です。
 
 `.codex-sample` は移植元の雛形として扱います。移植時は、この中身のうち「標準コピー対象」を対象プロジェクトのルートへ配置します。
 
@@ -58,6 +58,7 @@ OpenAI Codex の公式ドキュメントでは、skill は Agent Skills open sta
 │  ├─ project_intake.md
 │  ├─ workflow.md
 │  ├─ quality_check.md
+│  ├─ python_development.md
 │  ├─ naming_rules.md
 │  ├─ work_log.md
 │  ├─ excluded_sources.md
@@ -145,6 +146,7 @@ Do not store project-specific facts or working notes inside this skill directory
 | 調査・分析 | 公開情報調査 | `research-analysis-public-info` |
 | AI運用 | 生成AI向け指示文作成 | `ai-operations-prompt-drafting` |
 | 開発・ツール支援 | 簡易スクリプト作成 | `engineering-support-script` |
+| 開発・ツール支援 | Python CLI・データ処理・API連携・テスト・配布 | `python-*` |
 | ビジュアル制作 | 図解作成 | `visual-production-diagram` |
 
 正式な skill 一覧は `.agents/skills/*/SKILL.md` をスキャンして確認します。`domains_ja/task_catalog.md` や README は人間向けの説明であり、skill の登録簿ではありません。
@@ -171,7 +173,10 @@ skill 名は次の形式にします。
 information-organization-glossary
 document-review-terminology
 project-management-decision-log
+python-data-processing
 ```
+
+Python開発skillは `python-{task-name}` とし、小規模な単発スクリプトは引き続き `engineering-support-script`、明確なCLI契約、データ保全、外部API、スクレイピング、可視化、依存管理、配布、テスト、コードレビューを要する場合は対応する `python-*` skillを使います。
 
 ## 6. Codex 固有設定
 

@@ -1,6 +1,6 @@
 ---
 name: information-organization-project-context
-description: "Use when creating, reviewing, updating, or proposing project context, project profiles, overviews, status, issues, deliverables, stakeholders, or project memory from active project materials. Japanese triggers: プロジェクト概要, project context, 現状整理."
+description: "Use when the primary deliverable is a durable project-context or project-profile document for future agent work. Do not use for a temporary status report, workplan, file index, or issue ledger. Japanese triggers: project context作成, プロジェクト文脈整理, 案件概要台帳."
 ---
 
 # Information Organization Project Context

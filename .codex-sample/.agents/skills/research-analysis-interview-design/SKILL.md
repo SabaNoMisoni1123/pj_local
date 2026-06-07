@@ -1,6 +1,6 @@
 ---
 name: research-analysis-interview-design
-description: "Use when designing interviews, hearing plans, expert interview guides, stakeholder interview questions, questionnaires, survey questions, or fieldwork plans for research, policy, market, or consulting projects. Japanese triggers: ヒアリング設計, インタビュー質問, 質問票."
+description: "Use when the primary deliverable is an interview guide, hearing plan, questionnaire, or fieldwork question design. Do not use for meeting agendas or general issue structuring without questions. Japanese triggers: ヒアリング設計, インタビュー質問票, 調査質問設計."
 ---
 
 # Research Analysis Interview Design

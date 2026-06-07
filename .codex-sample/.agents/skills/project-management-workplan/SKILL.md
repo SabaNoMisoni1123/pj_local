@@ -1,6 +1,6 @@
 ---
 name: project-management-workplan
-description: "Use when designing workplans, organizing next steps, defining project approaches, sequencing tasks, clarifying responsibilities, or structuring how work should proceed. Japanese triggers: 作業計画, 進め方, タスク分解."
+description: "Use when the primary deliverable is a forward-looking workplan that sequences tasks, milestones, dependencies, and responsibilities. Do not use for extracting existing TODOs or recording current risks. Japanese triggers: 作業計画作成, 進め方設計, タスク分解計画."
 ---
 
 # Project Management Workplan

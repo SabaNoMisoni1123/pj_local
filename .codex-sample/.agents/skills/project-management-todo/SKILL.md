@@ -1,6 +1,6 @@
 ---
 name: project-management-todo
-description: "Use when extracting, consolidating, reviewing, updating, or formatting project TODOs, action items, owners, deadlines, pending decisions, unresolved issues, or task ledgers. Japanese triggers: TODO台帳, action item, タスク抽出."
+description: "Use when the primary deliverable is a TODO or action-item ledger with tasks, owners, deadlines, and status. Do not use for decisions, risks, a workplan, complete minutes, or a combined meeting follow-up package. Japanese triggers: TODO台帳, action item一覧, タスク抽出表."
 ---
 
 # Project Management TODO

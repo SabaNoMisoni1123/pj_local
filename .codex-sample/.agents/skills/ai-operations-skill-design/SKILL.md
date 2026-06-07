@@ -1,6 +1,6 @@
 ---
 name: ai-operations-skill-design
-description: "Use when designing, reviewing, reorganizing, or creating Codex skills, business task definitions, skill catalogs, or reusable agent workflows. Japanese triggers: skill設計, SKILL.md, タスク定義."
+description: "Use when the primary deliverable is a SKILL.md, skill boundary design, skill reorganization, or skill-specific review. Do not use for general AGENTS.md rules, prompts, or tracked change requests. Japanese triggers: skill設計, SKILL.md作成, skill発火条件."
 ---
 
 # AI Operations Skill Design

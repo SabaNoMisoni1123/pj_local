@@ -1,6 +1,6 @@
 ---
 name: communication-email-draft
-description: "Use when drafting, revising, polishing, or preparing emails, request letters, stakeholder updates, inquiry replies, or business communication text. Japanese triggers: メール文案, 依頼文, 連絡文."
+description: "Use when the primary deliverable is an outbound email or message ready to send. Do not use to summarize an existing email thread or extract its tasks. Japanese triggers: メール文案, 送信用依頼文, 連絡メール."
 ---
 
 # Communication Email Draft

@@ -26,6 +26,16 @@
 | `document-review-logic-structure` | ストーリー、論理構成、論点整合、提言のレビュー。 |
 | `document-review-quality-check` | 成果物全般の根拠、完全性、残リスクの品質確認。 |
 | `engineering-support-script` | 小規模スクリプト、検証コード、自動化補助、テストの作成・修正。 |
+| `python-project-intake` | Pythonツールの目的、入出力、実行環境、制約、完了条件の整理。 |
+| `python-cli-tool` | Python CLIのコマンド契約、実装、検証。 |
+| `python-data-processing` | CSV、Excel、JSON等の非破壊な読込、変換、検証。 |
+| `python-api-integration` | 外部APIの認証、通信、再試行、制限、エラー処理を含む実装。 |
+| `python-web-scraping` | 規約、robots.txt、負荷、構造変化に配慮したWeb収集。 |
+| `python-data-visualization` | 定義、単位、軸、凡例、再現性を備えた図表生成。 |
+| `python-dependency-management` | 仮想環境、依存追加、互換性、lock、ライセンスの判断。 |
+| `python-packaging` | Pythonパッケージ、entry point、バージョン、導入・削除手順の整備。 |
+| `python-testing` | リスクに応じた正常系、異常系、境界値テストの設計・実装。 |
+| `python-code-review` | Pythonコードのバグ、保守性、セキュリティ、データ破壊、テスト不足のレビュー。 |
 | `information-organization-email-thread` | `.eml` 等のメールスレッド整理・要約・論点抽出。 |
 | `information-organization-evidence-trace` | 事実、推測、不明、要確認を分けた根拠整理。 |
 | `information-organization-file-name-index` | ファイル名・フォルダ名だけから探索用インデックスを作成。 |
@@ -50,12 +60,23 @@
 - 入力、手順、出力、検証方法を短く定義できる。
 - プロジェクト固有情報ではなく、移植可能な業務ワークフローである。
 
+## 発火競合を防ぐルーティング規則
+
+1. ユーザーが求める主成果物を1つ特定し、原則として主skillを1件だけ選ぶ。
+2. 入力形式、途中工程、品質確認、補助的な観点に一致するだけのskillは追加発火させない。
+3. 同じ成果物に汎用skillと専門skillが一致する場合は、専門skillを優先する。
+4. 別の成果物が明示的に依頼されている場合だけ、追加skillを順番に使う。
+5. 主skill内で通常必要となる調査、テスト、依存確認、品質確認のために、別skillを自動発火させない。
+6. Pythonコードの実装・修正では、主たる動作に対応する `python-*` を1件選ぶ。`python-testing`、`python-dependency-management`、`python-packaging`、`python-code-review` は、それ自体が主成果物として依頼された場合だけ主skillにする。
+7. 対応するPython専門skillがある場合、`engineering-support-script` は選ばない。
+
 ## 分割・統合・削除の基準
 
 - 1 つの `SKILL.md` が複数の独立した成果物や判断基準を抱えたら分割を検討する。
 - description が似て発火競合するスキルは、境界を明確にする。大規模統合は先に更新提案を作成し、人間が確認できる状態にする。
 - 使われていないスキルでも、削除前に代替スキル、影響範囲、移行先を整理する。
 - 同じ常時ルールが複数スキルに重複している場合は、ルート `AGENTS.md` または `skills/README.md` へ寄せる。
+- Python skill は `python-{task-name}` とし、対応するPython専門skillが存在しない小規模処理だけを `engineering-support-script` で扱う。
 
 ## 補助ディレクトリの使い分け
 
