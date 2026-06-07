@@ -10,6 +10,7 @@
 - 品質チェックリスト作成
 - skill設計
 - AGENTS.md更新提案
+- Codex改善リクエスト作成・反映管理
 
 ## 代表skill
 
@@ -17,8 +18,9 @@
 
 - `ai-operations-prompt-drafting`
 - `ai-operations-agents-update`
+- `ai-operations-change-request`
 - `ai-operations-skill-design`
 
 ## 分類基準
 
-成果物がAI向けプロンプト、作業指示、チェックリスト、skill設計の場合は、この業務カットに分類します。
+成果物がAI向けプロンプト、作業指示、チェックリスト、skill設計、Codex運用改善リクエストの場合は、この業務カットに分類します。

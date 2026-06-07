@@ -17,6 +17,8 @@ Extract reliable information from saved email threads and organize timeline, par
 4. Converted exports such as `_mail.yml`, `.txt`, or `.md`
 5. `_gpt` or `_tmp` files as low-confidence references
 
+Exclude obsolete-information directories such as `old/` and `_old/` before applying this priority.
+
 ## Workflow
 
 1. Confirm the target email file exists.
@@ -44,6 +46,7 @@ Use Japanese unless requested otherwise. Recommended sections:
 
 - If `.eml` and converted text differ, prefer `.eml` and mention the discrepancy.
 - Preserve sender, recipient, timestamp, and quoted-reply chronology.
+- Do not inspect or infer from email files, attachments, or exports under `old/`, `_old/`, or similar excluded directories.
 - Do not expose credentials, private links, or unnecessary personal data.
 - Use markitdown-mcp only for non-text attachments or saved messages when direct reading is impractical.
 - Follow active `AGENTS.md` and `operating_ja/`; do not store project-specific facts in this skill.

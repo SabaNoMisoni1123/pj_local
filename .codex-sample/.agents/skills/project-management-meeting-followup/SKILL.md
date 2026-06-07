@@ -23,7 +23,7 @@ Use Japanese unless requested otherwise. Recommended sections:
 
 - 会議概要
 - 決定事項
-- TODO
+- TODO: use the action item table format in `templates/action_items_template.md`
 - 未解決事項
 - リスク・依存関係
 - 次回確認事項

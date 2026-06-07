@@ -97,6 +97,7 @@ function Remove-DirectoryIfSame {
 $scriptDir = Split-Path -Parent $PSCommandPath
 $repoRoot = (Resolve-Path -LiteralPath (Join-Path $scriptDir "..")).Path
 $sampleDir = Join-Path $repoRoot ".codex-sample"
+$codexConfigTemplate = Join-Path $sampleDir "codex_config_template.toml"
 
 if (-not (Test-Path -LiteralPath $sampleDir -PathType Container)) {
     throw ".codex-sample not found: $sampleDir"
@@ -119,7 +120,7 @@ Remove-FileIfSame `
 Remove-PathIfExists -Path (Join-Path $targetRoot ".agents") -Label ".agents"
 
 Remove-FileIfSame `
-    -Sample (Join-Path $sampleDir "config.toml") `
+    -Sample $codexConfigTemplate `
     -Path (Join-Path (Join-Path $targetRoot ".codex") "config.toml") `
     -Label ".codex/config.toml"
 

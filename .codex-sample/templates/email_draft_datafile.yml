@@ -1,0 +1,16 @@
+subject: |
+  sub
+body: |
+  body
+attachments:
+  - /path/to/attachment1
+  - /path/to/attachment2
+to:
+  - email-addr-to1@mail
+  - email-addr-to2@mail
+cc: 
+  - email-addr-cc1@mail
+  - email-addr-cc2@mail
+bcc:
+  - email-addr-bcc1@mail
+  - email-addr-bcc2@mail

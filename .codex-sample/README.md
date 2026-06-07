@@ -2,7 +2,9 @@
 
 この `.codex-sample` は、Codex や Agent Skills 互換エージェント向けの移植可能な雛形です。
 
-`.codex-sample` 自体を、移植後のプロジェクトルート相当として扱います。移植時は、この中身のうち「標準コピー対象」を対象プロジェクトのルートへ配置します。
+`.codex-sample` は移植元の雛形として扱います。移植時は、この中身のうち「標準コピー対象」を対象プロジェクトのルートへ配置します。
+
+このテンプレート管理プロジェクトで Codex 設定が誤適用されることを防ぐため、移植元には `.codex/config.toml` や `config.toml` という実設定名のファイルを置きません。Codex 設定の雛形は `codex_config_template.toml` として保持し、インストーラーが移植先でだけ `.codex/config.toml` にリネームして配置します。
 
 `README.md` はこの雛形の導入説明書です。移植先に既存 `README.md` がある場合は上書きせず、必要なら `codex_setup_README.md` など別名で保存します。
 
@@ -32,6 +34,8 @@ OpenAI Codex の公式ドキュメントでは、skill は Agent Skills open sta
 
 ## 2. ディレクトリ構成
 
+以下は移植後のプロジェクトルート構成です。移植元の `.codex-sample` では、`.codex/config.toml` の代わりに `codex_config_template.toml` を保持します。
+
 ```text
 プロジェクトルート/
 ├─ README.md
@@ -56,6 +60,7 @@ OpenAI Codex の公式ドキュメントでは、skill は Agent Skills open sta
 │  ├─ quality_check.md
 │  ├─ naming_rules.md
 │  ├─ work_log.md
+│  ├─ excluded_sources.md
 │  ├─ low_confidence_sources.md
 │  ├─ project_local_storage.md
 │  └─ agents_update_policy.md
@@ -170,9 +175,13 @@ project-management-decision-log
 
 ## 6. Codex 固有設定
 
-Codex 固有の設定は `.codex/config.toml` に置きます。
+Codex 固有の設定は、原則として移植先プロジェクトフォルダ内の `.codex/config.toml` で完結させます。
 
-このテンプレートの `config.toml` は最小雛形です。モデル、承認ポリシー、サンドボックス、MCP サーバー、実験的機能などは、導入先プロジェクトの運用ルールとセキュリティ要件に合わせて必要な項目だけを有効化します。
+`$HOME/.codex/config.toml` は、プロジェクトの `trust_level` だけを扱う個人環境側の台帳とします。モデル、承認ポリシー、サンドボックス、TUI、MCP サーバー、実験的機能などの運用設定は、プロジェクト側の `.codex/config.toml` に置きます。
+
+このテンプレート管理プロジェクトでは、誤適用を防ぐため Codex 設定雛形を `codex_config_template.toml` として保持します。インストーラーを使うと、移植先では `.codex/config.toml` として配置されます。導入先プロジェクトの運用ルールとセキュリティ要件に合わせて必要な項目だけを有効化します。
+
+PowerShell 環境での起動時エラーを避けるため、`$HOME/.codex/config.toml` とプロジェクト側の `.codex/config.toml` のいずれにも、shell へ環境変数を明示的に渡す `[shell_environment_policy]` は置かない方針とします。
 
 `.codex/rules/` などの追加機能は、必要になった場合だけ追加します。初期状態では、実験的機能やプロジェクトごとの差が大きい設定を過剰に固定しません。
 
@@ -206,11 +215,12 @@ project-local/generated-outputs-index.md
 ## 8. 新規プロジェクトへ導入した直後に行うこと
 
 1. プロジェクトルートの `AGENTS.md` を確認する。
-2. `operating_ja/project_intake.md` に沿って、案件目的、成果物、期限、会議体、主要論点、リスクを確認する。
-3. `operating_ja/project_local_storage.md` に従い、プロジェクト固有情報の保存先を決める。
-4. `operating_ja/low_confidence_sources.md` に従い、`_gpt` / `_tmp` / 変換済みファイルを低信頼として扱う。
-5. 必要に応じて `templates/project_context_template.md` を使い、プロジェクト側に project context を新規作成する。
-6. 共通領域には、案件名、人名、メール本文、ファイル索引、TODO実体を保存しない。
+2. 必要に応じて `$HOME/.codex/config.toml` に対象プロジェクトの `trust_level` だけを追加する。
+3. `operating_ja/project_intake.md` に沿って、案件目的、成果物、期限、会議体、主要論点、リスクを確認する。
+4. `operating_ja/project_local_storage.md` に従い、プロジェクト固有情報の保存先を決める。
+5. `operating_ja/low_confidence_sources.md` に従い、`_gpt` / `_tmp` / 変換済みファイルを低信頼として扱う。
+6. 必要に応じて `templates/project_context_template.md` を使い、プロジェクト側に project context を新規作成する。
+7. 共通領域には、案件名、人名、メール本文、ファイル索引、TODO実体を保存しない。
 
 ## 9. 他プロジェクトへの移植
 
@@ -219,7 +229,7 @@ project-local/generated-outputs-index.md
 ```text
 AGENTS.md
 .agents/
-config.toml
+codex_config_template.toml -> .codex/config.toml
 domains_ja/
 operating_ja/
 templates/
@@ -228,11 +238,17 @@ project-local/
 
 `README.md` は導入説明として必要な場合だけコピーします。移植先に既存 `README.md` がある場合は上書きせず、別名保存または参照のみとします。
 
+`codex_config_template.toml` は、新規プロジェクトにまだ `.codex/config.toml` がない場合だけコピーします。既存 `.codex/config.toml` がある場合は上書きせず、必要な設定だけ差分提案にしてください。
+
 `project-local/` は、新規プロジェクトにまだ同名フォルダがない場合だけ、空テンプレートとしてコピーします。既存 `project-local/` がある場合は上書きせず、必要なテンプレートだけ差分提案にしてください。
+
+更新用スクリプトは、通常は共通テンプレート領域だけを `.codex-sample` の内容へ同期します。ただし、既存 `.codex/config.toml` と既存 `project-local/` は更新しません。`scripts/update_codex_sample.ps1 <project-root> -Force` または `scripts/update_codex_sample.sh --force <project-root>` を使うと、既存 `README.md` だけを強制的に置き換えます。
+
+`.agents/`、`domains_ja/`、`operating_ja/`、`templates/` はディレクトリ単位で同期するため、雛形側で廃止された配下ファイルは移植先からも削除されます。`.codex/config.toml` と `project-local/` は、ローカル調整や案件固有情報を含み得るため、`--force` / `-Force` 指定時も既存ファイル・ディレクトリは削除・置換しません。存在しない場合だけ雛形からコピーします。
 
 既存 `AGENTS.md` がある場合は上書きせず、`templates/agents_update_proposal_template.md` を使って追記案を作成し、人間が必要な範囲だけ反映してください。
 
-`config.toml` は、移植先では `.codex/config.toml` として扱います。既存 `.codex/config.toml` がある場合は上書きせず、必要な設定だけ差分提案にしてください。
+`codex_config_template.toml` は、移植先ではインストーラーや更新スクリプトにより `.codex/config.toml` として扱います。既存 `.codex/config.toml` がある場合は上書きせず、必要な設定だけ差分提案にしてください。`$HOME/.codex/config.toml` は標準コピー対象外とし、各利用者がプロジェクトの `trust_level` だけを追加します。
 
 コピーしないことを推奨するもの:
 
@@ -255,7 +271,7 @@ codex_*.md
 
 ## 10. 運用上の注意
 
-- 人間が管理するのは `AGENTS.md`, `.agents/`, `.codex/config.toml`, `domains_ja/`, `operating_ja/`, `templates/` の追加・更新に限定する。
+- 人間が管理するのは `AGENTS.md`, `.agents/`, `codex_config_template.toml`, `domains_ja/`, `operating_ja/`, `templates/` の追加・更新に限定する。移植先では `codex_config_template.toml` を `.codex/config.toml` として扱う。
 - 既存の Codex 内部ファイル、ログ、DB、セッション、キャッシュ、一時ファイルは直接編集しない。
 - skill は汎用手順に徹し、案件固有の例を入れない。
 - 出力成果物は、各プロジェクトの `AGENTS.md` に従う。

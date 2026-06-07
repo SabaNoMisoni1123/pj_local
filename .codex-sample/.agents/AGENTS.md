@@ -14,6 +14,7 @@
 | Skill | 用途 |
 |---|---|
 | `ai-operations-agents-update` | `AGENTS.md` やプロジェクト向けエージェント運用ルールの作成・更新提案。 |
+| `ai-operations-change-request` | Codex 設定、skill、運用ルール、テンプレート等の改善リクエスト作成・整理・反映管理。 |
 | `ai-operations-prompt-drafting` | AI 向けプロンプト、作業指示、品質条件の作成。 |
 | `ai-operations-skill-design` | Skill の設計、レビュー、再編、追加。 |
 | `communication-email-draft` | メール、依頼文、ステークホルダー向け連絡文の作成・修正。 |

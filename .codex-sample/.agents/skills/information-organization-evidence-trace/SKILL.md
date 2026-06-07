@@ -19,7 +19,7 @@ Make outputs auditable by separating evidence-backed facts, inferences, unknowns
 ## Workflow
 
 1. List claims, decisions, TODOs, or statements that require evidence.
-2. Locate the strongest available source, prioritizing original project materials and primary public sources.
+2. Locate the strongest available source, prioritizing original project materials and primary public sources while excluding `old/`, `_old/`, and similar obsolete-information directories.
 3. Classify each item as `事実`, `推測`, `不明`, or `要確認`.
 4. Record source file, location, date, URL, and low-confidence notes when available.
 5. Surface contradictions, missing evidence, and confirmation questions without resolving them silently.
@@ -41,5 +41,6 @@ Use `該当箇所不明` when source location cannot be identified.
 
 - Link each claim to a concrete source file, location, date, or URL when available.
 - Distinguish primary evidence from summaries, drafts, generated files, and conversions.
+- Do not use paths, filenames, metadata, or contents under `old/`, `_old/`, or similar excluded directories as evidence or contradiction checks.
 - Use markitdown-mcp only when non-text files must be inspected; cite originals and note conversion weakness.
 - Follow active `AGENTS.md` and `operating_ja/`; do not store project-specific facts in this skill.
