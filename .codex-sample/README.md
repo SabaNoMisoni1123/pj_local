@@ -139,6 +139,7 @@ Do not store project-specific facts or working notes inside this skill directory
 | 業務カット | タスク | skill |
 |---|---|---|
 | 業務推進・PMO | TODO管理 | `project-management-todo` |
+| 業務推進・PMO | AI実行タスク整理 | `project-management-ai-task-planning` |
 | 情報整理 | メールスレッド整理 | `information-organization-email-thread` |
 | 文書校閲 | 資料整合性チェック | `document-review-consistency` |
 | 資料作成 | 議事録作成 | `document-production-minutes` |

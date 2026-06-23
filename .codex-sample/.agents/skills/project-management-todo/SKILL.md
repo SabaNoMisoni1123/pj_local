@@ -1,6 +1,6 @@
 ---
 name: project-management-todo
-description: "Use when the primary deliverable is a TODO or action-item ledger with tasks, owners, deadlines, and status. Do not use for decisions, risks, a workplan, complete minutes, or a combined meeting follow-up package. Japanese triggers: TODO台帳, action item一覧, タスク抽出表."
+description: "Use when the primary deliverable is a TODO or action-item ledger with tasks, owners, deadlines, and status. Do not use for decisions, risks, a workplan, complete minutes, a combined meeting follow-up package, or converting project TODOs into Codex and ChatGPT execution tasks. Japanese triggers: TODO台帳, action item一覧, タスク抽出表."
 ---
 
 # Project Management TODO
@@ -8,6 +8,8 @@ description: "Use when the primary deliverable is a TODO or action-item ledger w
 ## Purpose
 
 Extract project-management-ready TODOs without inventing owners, deadlines, status, or priority.
+
+If the user wants scattered project TODOs converted into routed Codex tasks, ChatGPT tasks, standalone prompts, and execution logs, use `project-management-ai-task-planning` instead.
 
 ## Extraction Targets
 

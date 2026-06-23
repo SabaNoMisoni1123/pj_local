@@ -6,6 +6,7 @@ skill の正式な発見単位は `../.agents/skills/*/SKILL.md` であり、こ
 | 業務カット | タスク | skill | 主な入力 | 主な出力 |
 |---|---|---|---|---|
 | 業務推進・PMO | TODO管理 | `project-management-todo` | 議事録、メール、資料 | TODO CSV |
+| 業務推進・PMO | AI実行タスク整理 | `project-management-ai-task-planning` | TODO、メモ、issue、計画資料、議事録、既存ログ | AIタスク一覧、個別プロンプト、実行履歴表 |
 | 業務推進・PMO | 課題・リスク管理 | `project-management-risk-issue` | 課題表、議事録、メール | リスク表、課題表 |
 | 業務推進・PMO | 作業方針整理 | `project-management-workplan` | 状況メモ、制約、目標 | 作業計画 |
 | 業務推進・PMO | 決定事項管理 | `project-management-decision-log` | 議事録、メール、資料 | 決定事項一覧 |

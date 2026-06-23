@@ -1,6 +1,6 @@
 ---
 name: ai-operations-prompt-drafting
-description: "Use when the primary deliverable is a reusable prompt or task brief to be given to an AI. Do not use for repository-level AGENTS.md rules or Agent Skills definitions. Japanese triggers: AIプロンプト作成, AI向け作業指示, 生成AI依頼文."
+description: "Use when the primary deliverable is a reusable prompt or task brief to be given to an AI. Do not use for repository-level AGENTS.md rules, Agent Skills definitions, or converting project TODOs into a routed set of Codex and ChatGPT execution tasks. Japanese triggers: AIプロンプト作成, AI向け作業指示, 生成AI依頼文."
 ---
 
 # AI Operations Prompt Drafting
@@ -8,6 +8,8 @@ description: "Use when the primary deliverable is a reusable prompt or task brie
 ## Purpose
 
 Create reusable prompts with clear objectives, inputs, constraints, outputs, and acceptance criteria.
+
+If the user wants multiple project TODOs inventoried, classified into Codex and ChatGPT lanes, and packaged with execution logs, use `project-management-ai-task-planning` instead.
 
 ## Required Elements
 

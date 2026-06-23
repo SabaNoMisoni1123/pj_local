@@ -42,6 +42,7 @@
 | `information-organization-glossary` | 用語集、略語集、固有名詞、人名・組織名メモの作成。 |
 | `information-organization-project-context` | プロジェクト概要、現状、関係者、成果物、論点の整理。 |
 | `information-organization-project-index` | プロジェクト内ファイルの索引、資料台帳、アクセスマップ、文書カタログの作成。 |
+| `project-management-ai-task-planning` | プロジェクト内TODOをCodex・ChatGPT・人間確認タスクへ分類し、個別プロンプトと実行履歴を作成。 |
 | `project-management-decision-log` | 決定事項、保留判断、承認状況、判断根拠の整理。 |
 | `project-management-meeting-followup` | 会議後のアクション、決定事項、未解決論点の抽出。 |
 | `project-management-risk-issue` | リスク、課題、ブロッカー、依存関係、エスカレーションの整理。 |

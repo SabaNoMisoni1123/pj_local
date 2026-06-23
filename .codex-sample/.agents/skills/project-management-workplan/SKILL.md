@@ -1,6 +1,6 @@
 ---
 name: project-management-workplan
-description: "Use when the primary deliverable is a forward-looking workplan that sequences tasks, milestones, dependencies, and responsibilities. Do not use for extracting existing TODOs or recording current risks. Japanese triggers: 作業計画作成, 進め方設計, タスク分解計画."
+description: "Use when the primary deliverable is a forward-looking workplan that sequences tasks, milestones, dependencies, and responsibilities. Do not use for extracting existing TODOs, recording current risks, or converting project TODOs into Codex and ChatGPT execution tasks. Japanese triggers: 作業計画作成, 進め方設計, タスク分解計画."
 ---
 
 # Project Management Workplan
@@ -8,6 +8,8 @@ description: "Use when the primary deliverable is a forward-looking workplan tha
 ## Purpose
 
 Turn goals, constraints, evidence, and unknowns into a practical workplan.
+
+If the user wants existing project TODOs, notes, and logs converted into AI-executable tasks with prompts and execution tracking, use `project-management-ai-task-planning` instead.
 
 ## Workflow
 
